@@ -29,7 +29,7 @@ jobs:
         with:
           args: --delete
         env:
-          AWS_S3_BUCKET: mern-Cheatsheet
+          AWS_S3_BUCKET: yash-cloud-mern-cheatsheet
           AWS_ACCESS_KEY_ID: AKIAYYAZ4I7VW6CCDUMQ
           AWS_SECRET_ACCESS_KEY: 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
           AWS_REGION: ap-south-1
