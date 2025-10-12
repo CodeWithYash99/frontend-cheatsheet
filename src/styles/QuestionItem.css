@@ -1,0 +1,64 @@
+.qi-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.qi-question {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 12px 8px;
+  font-size: 1.03rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.qi-num {
+  display: inline-flex;
+  min-width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  background: #eef2ff;
+  color: #4f46e5;
+  border-radius: 999px;
+  font-weight: 700;
+  margin-right: 12px;
+}
+
+.qi-text {
+  flex: 1 1 auto;
+  text-align: left;
+  font-weight: 600; /* make question text stand out */
+}
+
+.qi-question:focus {
+  outline: 2px solid #61dafb;
+}
+
+.qi-answer {
+  text-align: start;
+  padding: 8px 16px 16px;
+  color: #222;
+  background: #fafafa;
+}
+
+.qi-answer li {
+  padding-left: 12px;
+}
+
+/* Render strong tags inside answers as block-level with vertical spacing
+   to mimic <br /> before and after without changing JSX */
+.qi-answer strong {
+  display: block;
+  margin: 10px 0;
+  font-weight: 700;
+}
+
+.qi-toggle {
+  font-weight: 700;
+  margin-left: 12px;
+}

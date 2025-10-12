@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Make inline code and code blocks visually distinct and accessible */
+code {
+  background: rgba(27,31,35,0.05);
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+pre {
+  background: #0b1220; /* dark background for block code */
+  color: #e6eef6; /* light text */
+  padding: 12px 16px;
+  border-radius: 8px;
+  overflow: auto;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-size: 0.95em;
+  line-height: 1.45;
+  margin: 0.75rem 0;
+}
+
+/* Slightly different look for code blocks inside question answers */
+.qi-answer pre {
+  background: linear-gradient(180deg, #071126, #0b1220);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Ensure code inside pre keeps formatting and wraps long lines gracefully */
+pre code {
+  white-space: pre-wrap; /* allow wrapping on small screens */
+  word-break: break-word;
+}

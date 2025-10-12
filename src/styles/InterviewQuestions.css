@@ -1,0 +1,28 @@
+.iq-root {
+  margin: 0 auto;
+  padding: 24px;
+  width: 90%;
+}
+
+.iq-intro {
+  color: #444;
+}
+
+.iq-root p {
+  text-align: justify;
+  line-height: 1.6;
+}
+
+.iq-list {
+  width: 100%;
+  margin-top: 16px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.iq-list li {
+  padding-left: 14px;
+  list-style-position: inside;
+}
