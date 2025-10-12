@@ -1,0 +1,45 @@
+name: Deploy FSD Cheatsheet App to AWS
+
+on:
+  push:
+    branches:
+      - master  # Change this if your main branch is 'master'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --delete
+        env:
+          AWS_S3_BUCKET: fsd-Cheatsheet
+          AWS_ACCESS_KEY_ID: AKIAYYAZ4I7VW6CCDUMQ
+          AWS_SECRET_ACCESS_KEY: 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
+          AWS_REGION: ap-south-1
+          SOURCE_DIR: build
+
+      - name: Invalidate CloudFront Cache
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+          AWS_REGION: ap-south-1
+          DISTRIBUTION: E28TK17BX7Z3YG
+          PATHS: "/*"
+          AWS_ACCESS_KEY_ID: AKIAYYAZ4I7VW6CCDUMQ
+          AWS_SECRET_ACCESS_KEY: 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
