@@ -26,3 +26,16 @@
   padding-left: 14px;
   list-style-position: inside;
 }
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .iq-root {
+    width: 100%;
+    padding: 10px 12px; /* compact padding on phones */
+  }
+
+  .iq-list {
+    width: 100%;
+    border-radius: 0; /* edge-to-edge feel on mobile */
+  }
+}
