@@ -23,18 +23,19 @@ export const ReactQuestions = [
     q: "What is virtual DOM?",
     a: (
       <>
-        <p>
-          <li>
-            Virtual DOM is a key concept in React JS. It is a light weight copy
-            of actual DOM that React uses renders and performance optimization.
-          </li>
-        </p>
-        <p>
-          <li>
-            It minimizes the number of DOM manipulations by comparing the new
-            virtual DOM with previous one and applying differences.
-          </li>
-        </p>
+        <li>
+          Virtual DOM is a key concept in React JS. It is a light weight copy of
+          actual DOM that React uses renders and performance optimization.
+        </li>
+        <li>
+          It minimizes the number of DOM manipulations by comparing the new
+          virtual DOM with previous one and applying differences.
+        </li>
+        <strong>Benefits of the Virtual DOM:</strong>
+        <li>Faster updates</li>
+        <li>Better performance in dynamic apps</li>
+        <li>Efficient rendering using diffing and reconciliation</li>
+        <li>Cleaner code using a declarative approach</li>
       </>
     ),
   },
@@ -43,6 +44,20 @@ export const ReactQuestions = [
     a: (
       <>
         <p>
+          Reconciliation is a process in React uses to update the DOM
+          efficiently when your application changes state or props.
+          <li>
+            When component change state or props, React creates a new virtual
+            DOM tree representation the updated UI.
+          </li>
+          <li>
+            React identifies what exactly changed, then updates only those
+            changed parts in the real DOM. This process is called
+            Reconciliation.
+          </li>
+        </p>
+        <strong>or</strong>
+        <p>
           Reconciliation is the process through which React updates the DOM with
           changes in the component's state or props. React uses a diffing
           algorithm to compare the new virtual DOM with the previous one and
@@ -50,30 +65,29 @@ export const ReactQuestions = [
           process helps optimize performance by minimizing direct DOM
           manipulations.
         </p>
-        <br />
-        <strong>or</strong>
-        <br />
-        <p>
-          Reconciliation is a process in React uses to update the DOM
-          efficiently when your application changes state or props.  When
-          component change state or props, React creates a new virtual DOM tree
-          representation the updated UI.  React identifies what exactly
-          changed, then updates only those changed parts in the real DOM. This
-          process is called reconciliation.
-        </p>
       </>
     ),
   },
   {
-    q: "Difference between virtual DOM & shadow DOM?",
+    q: "Difference between Virtual DOM & Shadow DOM?",
     a: (
-      <p>
-        <strong>Virtual DOM:</strong> A lightweight copy of the real DOM used by
-        libraries like React to optimize UI updates. <br /> <br />
-        <strong>Shallow DOM:</strong> A browser feature used to encapsulate
-        styles and markup inside Web Components, preventing them from affecting
-        or being affected by the rest of the page.
-      </p>
+      <>
+        <strong>Virtual DOM:</strong>
+        <li>
+          Virtual DOM is a key concept in React JS. It is a light weight copy of
+          actual DOM that React uses renders and performance optimization.
+        </li>
+        <li>
+          It minimizes the number of DOM manipulations by comparing the new
+          virtual DOM with previous one and applying differences.
+        </li>
+        <strong>Shadow DOM:</strong>
+        <li>
+          Shadow DOM is a browser feature used to encapsulate styles and markup
+          inside Web Components, preventing them being affected by the rest of
+          the page.
+        </li>
+      </>
     ),
   },
   {
@@ -91,20 +105,12 @@ export const ReactQuestions = [
   {
     q: "What is Babel?",
     a: (
-      <>
-        <p>
-          Babel is a JavaScript compiler. It is a tool chain that is mostly used
-          to convert ECMAScript 2015 code into the backwards compatible of
-          JavaScript in current & older browsers.
-        </p>
-        <br />
-        <strong>or</strong>
-        <br />
-        <p>
-          to use the latest JavaScript features without worrying about browser
-          support.
-        </p>
-      </>
+      <p>
+        <b>Babel</b> is a <b>JavaScript compiler</b> that converts{" "}
+        <b>modern JavaScript (ES6+)</b> into{" "}
+        <b>backward-compatible JavaScript </b>
+        that can run in <b>current & older browsers</b>.
+      </p>
     ),
   },
   {
@@ -115,14 +121,14 @@ export const ReactQuestions = [
           Webpack in React is JavaScript module bundler is commonly used with
           React to bundle and manage with dependencies.
         </p>
-        <br />
         <strong>or</strong>
-        <br />
         <p>
-          Webpack takes modules with dependencies and generates static assets
-          (such as bundled JavaScript, CSS, images) that can be served to the
-          browser. It analyzes your application's dependency graph and combines
-          files efficiently for optimized delivery.
+          Webpack is a module bundler used to bundle JavaScript, CSS, images,
+          and other assets into optimized files for the browser. In React
+          projects, Webpack helps you:
+          <li>Load and bundle JSX, JavaScript, CSS, and images</li>
+          <li>Use Babel to transpile modern JavaScript and JSX</li>
+          <li>Create optimized builds for development and production</li>
         </p>
       </>
     ),
@@ -133,21 +139,31 @@ export const ReactQuestions = [
       <p>
         React Portal is a feature that allows you to render a component's
         children into a DOM node that exists outside the DOM hierarchy of the
-        parent component. This is useful for modals, tooltips, and other UI
-        elements that need to visually break out of their parent container.
+        parent component.
+        <li>
+          This is useful for modals, tooltips, and other UI elements that need
+          to visually break out of their parent container.
+        </li>
       </p>
     ),
   },
   {
     q: "Stateless and Stateful Components",
     a: (
-      <p>
-        Stateless components are functional components that do not manage their
-        own state. They receive data via props and render UI based on that data.
-        Stateful components, on the other hand, are class-based components that
-        can manage their own state using the `this.state` object and can respond
-        to user interactions and lifecycle events.
-      </p>
+      <>
+        <strong>Stateless:</strong>
+        <li>
+          Stateless components are functional components that do not manage
+          their own state. They receive data via props and render UI based on
+          that data.
+        </li>
+        <strong>Stateful:</strong>
+        <li>
+          Stateful components, are class-based components that can manage their
+          own state using the `this.state` object and can respond to user
+          interactions and lifecycle events.
+        </li>
+      </>
     ),
   },
   {
@@ -158,11 +174,13 @@ export const ReactQuestions = [
           A Fragment is a common pattern in React that allows you to group a
           list of children without adding extra nodes to the DOM. It is useful
           when you want to return multiple elements from a component without
-          wrapping them in a parent element like a <code>div</code>.
+          wrapping them in a parent element like a{" "}
+          <code>
+            <b>div</b>
+          </code>
+          .
         </p>
-        <br />
         <strong>or</strong>
-        <br />
         <p>
           A Fragment in React lets you group multiple JSX elements to the DOM
           without adding extra nodes. It keeps the DOM clean and avoid layout or
@@ -172,38 +190,95 @@ export const ReactQuestions = [
     ),
   },
   {
-    q: "What are components in React JS?",
+    q: "What are Components in React JS?",
     a: (
-      <p>
-        Components are the building blocks of a React application. They are
-        reusable, self-contained pieces of UI that can manage their own state
-        and props. Components can be functional or class-based.
-      </p>
+      <>
+        <p>
+          <li>
+            Components are reusable piece of code that returns React element
+            describing what should appear on the screen.
+          </li>
+          <li>
+            Components can have their own state and props to manage their data.
+          </li>
+          <li>Components can be Function and class-based components.</li>
+          <li>They make your UI easier to maintain and reusable.</li>
+        </p>
+        <strong>or</strong>
+        <p>
+          Components are the building blocks of a React application. They are
+          reusable, self-contained pieces of UI that can manage their own state
+          and props. Components can be functional or class-based.
+        </p>
+      </>
     ),
   },
   {
     q: "Difference between Functional and Class components?",
     a: (
-      <p>
-        Functional components are simpler and are defined as JavaScript
-        functions. They can use React hooks to manage state and lifecycle
-        methods. Class components are more complex, defined as ES6 classes,
-      </p>
+      <>
+        <p>
+          <strong>Functional:</strong>
+          <li>Functional components are plain JavaScript functions.</li>
+          <li>
+            They can use hooks like{" "}
+            <code>
+              <b>useState</b>
+            </code>{" "}
+            and{" "}
+            <code>
+              <b>useEffect</b>
+            </code>{" "}
+            to manage state and lifecycle methods.
+          </li>
+          <li>
+            This makes functional components very powerful and the preferred way
+            in modern React development.
+          </li>
+          <strong>Class:</strong>
+          <li>
+            Class components are ES6 classes that extend{" "}
+            <code>
+              <b>React.Component</b>
+            </code>
+            .
+          </li>
+          <li>
+            They manage state with{" "}
+            <code>
+              <b>this.state</b>
+            </code>{" "}
+            and lifecycle methods like{" "}
+            <code>
+              <b>componentDidMount</b>
+            </code>
+            .
+          </li>
+          <li>
+            they require more boilerplate code and can be harder to read and
+            maintain.
+          </li>
+        </p>
+        <strong>or</strong>
+        <p>
+          Functional components are simpler and are defined as JavaScript
+          functions. They can use React hooks to manage state and lifecycle
+          methods. Class components are more complex, defined as ES6 classes,
+        </p>
+      </>
     ),
   },
   {
     q: "What is Pure component?",
     a: (
       <>
-        <p>
-          <li>
-            A Pure Component in React is a component that implements a shallow
-            comparison on props and state to decide whether it should re-render.
-          </li>
-          <li>
-            This helps optimize performance by preventing unnecessary renders.
-          </li>
-        </p>
+        <li>
+          A Pure Component in React is a component that implements a shallow
+          comparison on props and state to decide whether it should re-render.
+        </li>
+        <li>
+          This helps optimize performance by preventing unnecessary renders.
+        </li>
       </>
     ),
   },
@@ -213,13 +288,10 @@ export const ReactQuestions = [
       <>
         <p>
           Higher Order Components are functions in React that take a component
-          and return a new component with additional props. <br />
+          and return a new component with additional props.
           <br /> It’s a pattern for reusing component logic.
         </p>
-        <br />
         <strong>or</strong>
-        <br />
-        <br />
         <p>
           A Higher-Order Component (HOC) is a function that takes a component as
           an argument and returns a new component with enhanced functionality.
@@ -230,16 +302,20 @@ export const ReactQuestions = [
     ),
   },
   {
-    q: "What is Controlled component vs uncontrolled component in React JS",
+    q: "What is Controlled component vs Uncontrolled component in React JS?",
     a: (
-      <p>
-        A controlled component in React is a form input element where the value
-        is controlled by React’s state. This allows real-time validation,
-        dynamic updates, and better control. An uncontrolled component, relies
-        on the DOM to handle its state using refs. While uncontrolled components
-        may require less code for simple forms, controlled components are
-        preferred for complex, interactive forms because they offer better
-        control and flexibility.
+      <>
+        <li>
+          A controlled component in React is a form input element where the
+          value is controlled by React’s state. This allows real-time
+          validation, dynamic updates, and better control.
+        </li>
+        <li>
+          An uncontrolled component, relies on the DOM to handle its state using
+          refs. While uncontrolled components may require less code for simple
+          forms, controlled components are preferred for complex, interactive
+          forms because they offer better control and flexibility.
+        </li>
         <strong>or</strong>
         <li>
           A Controlled Component is a form element whose value is controlled by
@@ -249,7 +325,7 @@ export const ReactQuestions = [
           An Uncontrolled Component is managed by the DOM itself, and React does
           not directly control its state.
         </li>
-      </p>
+      </>
     ),
   },
   {
@@ -279,17 +355,16 @@ export const ReactQuestions = [
             state.
           </li>
           <li>
-            Container components, on the other hand, handle how things work—they
-            manage state, fetch data, and pass props down to presentational
-            components. This separation helps keep UI logic and business logic
-            organized.
+            Container components, handle how things work—they manage state,
+            fetch data, and pass props down to presentational components. This
+            separation helps keep UI logic and business logic organized.
           </li>
         </p>
       </>
     ),
   },
   {
-    q: "What are Props & State?",
+    q: "What are Props & State? (or) Difference between props and state?",
     a: (
       <>
         <p>
@@ -315,20 +390,18 @@ export const ReactQuestions = [
     ),
   },
   {
-    q: "What is conditional rendering?",
+    q: "What is Conditional rendering?",
     a: (
       <>
-        <p>
-          <li>
-            Conditional rendering in React is the process of displaying
-            different UI elements based on certain conditions.
-          </li>
-          <li>
-            We can use standard JavaScript operators like if, ternary (?:), or
-            && to render content based on state or props. This makes the UI
-            dynamic and interactive.
-          </li>
-        </p>
+        <li>
+          Conditional rendering in React is the process of displaying different
+          UI elements based on certain conditions.
+        </li>
+        <li>
+          We can use standard JavaScript operators like if, ternary (?:), or &&
+          to render content based on state or props. This makes the UI dynamic
+          and interactive.
+        </li>
       </>
     ),
   },
@@ -336,74 +409,83 @@ export const ReactQuestions = [
     q: "What are Lists & Keys?",
     a: (
       <>
-        <p>
-          <li>
-            In React, lists are used to render multiple elements by mapping over
-            an array.
-          </li>
-          <li>
-            For each item rendered, React requires a key prop, which is a unique
-            identifier.
-          </li>
-          <li>
-            Keys help React identify which items have changed, been added, or
-            removed, and improve performance during re-renders.
-          </li>
-          <li>Using proper keys is important for efficient DOM updates.</li>
-        </p>
-      </>
-    ),
-  },
-  {
-    q: "What is the difference between props and state?",
-    a: (
-      <>
-        <p>
-          <strong>Props:</strong> Props (short for properties) are read-only
-          attributes passed from a parent component to a child component. They
-          allow data to flow down the component tree and are immutable within
-          the child component.
-          <br />
-          <strong>State:</strong> State is a mutable data structure that is
-          managed within a component. It can be updated using the setState
-          method in class components or the useState hook in functional
-          components. State changes trigger re-renders of the component to
-          reflect the updated data.
-        </p>
+        <li>
+          In React, lists are used to render multiple elements by mapping over
+          an array.
+        </li>
+        <li>
+          For each item rendered, React requires a key prop, which is a unique
+          identifier.
+        </li>
+        <li>
+          Keys help React identify which items have changed, been added, or
+          removed, and improve performance during re-renders.
+        </li>
+        <li>Using proper keys is important for efficient DOM updates.</li>
+        <strong>or</strong>
+        <strong>Lists:</strong>
+        <li>
+          In React, a list refers to rendering multiple elements based on an
+          array of data using JavaScript's
+          <code>
+            <b>.map()</b>
+          </code>{" "}
+          method.
+        </li>
+        <strong>Keys:</strong>
+        <li>
+          A key is a special string prop that you give to each item in a list so
+          React can track which items have changed, been added, or removed.
+        </li>
       </>
     ),
   },
   {
     q: "What is life cycle methods in React JS?",
     a: (
-      <p>
-        Lifecycle methods in React are special methods in class components that
-        run at specific points in a component’s life—from when it mounts,
-        updates, to when it unmounts. These methods allow developers to run code
-        at those key moments.
-      </p>
+      <>
+        <p>
+          Lifecycle methods are special functions in class components that run
+          at specific points in a component’s life—from mounts to updates, to
+          unmounts.
+        </p>
+        <p>
+          React components go through three main phases:
+          <ol>
+            <li>
+              <b>Mounting –</b> Component is being created and inserted into the
+              DOM.
+            </li>
+            <li>
+              <b>Updating –</b> Component is re-rendered due to state/props
+              change.
+            </li>
+            <li>
+              <b>Unmounting –</b> Component is removed from the DOM.
+            </li>
+          </ol>
+        </p>
+      </>
     ),
   },
   {
-    q: "Explain the concept of error boundaries in React?",
+    q: "Explain the concept of Error boundaries in React?",
     a: (
       <>
         <p>
-          Error boundaries are React components that catch JavaScript errors
-          anywhere in their child component tree during rendering or in
+          <b>Error boundaries</b> are React components that catch JavaScript
+          errors anywhere in their child component tree during rendering or in
           lifecycle methods. They allow you to display a fallback UI instead of
           crashing the whole app.
         </p>
-        <br />
         <strong>or</strong>
-        <br />
         <p>
-          Error boundaries are special React components that catch JavaScript
-          errors in their child component tree. They prevent the entire app from
-          crashing by displaying a fallback UI when an error occurs. Error
-          boundaries can be created by defining a class component with the
-          static method getDerivedStateFromError and the lifecycle method
-          componentDidCatch.
+          <b>Error boundaries</b> are special React components that catch
+          JavaScript errors in their child component tree. They prevent the
+          entire app from crashing by displaying a fallback UI when an error
+          occurs. Error boundaries can be created by defining a class component
+          with the static method getDerivedStateFromError and the lifecycle
+          method componentDidCatch.
         </p>
       </>
     ),
@@ -417,24 +499,41 @@ export const ReactQuestions = [
           Updating, and Unmounting.
           <li>
             <b>Mounting:</b>
+            <br />
+            This phase occurs when a component is being created and inserted
+            into the DOM. Key lifecycle methods in this phase include:
+            <code>
+              <b>
+                constructor, static getDerivedStateFromProps, render, and
+                componentDidMount
+              </b>
+            </code>
+            .
           </li>
-          This phase occurs when a component is being created and inserted into
-          the DOM. Key lifecycle methods in this phase include: constructor,
-          static getDerivedStateFromProps, render, and componentDidMount.
           <li>
             <b>Updating:</b>
+            <br />
+            This phase happens when a component's props or state change, leading
+            to a re-render. Important lifecycle methods here are static
+            <code>
+              <b>
+                getDerivedStateFromProps, shouldComponentUpdate, render,
+                getSnapshotBeforeUpdate, and componentDidUpdate
+              </b>
+            </code>
+            .
           </li>
-          This phase happens when a component's props or state change, leading
-          to a re-render. Important lifecycle methods here are static
-          getDerivedStateFromProps, shouldComponentUpdate, render,
-          getSnapshotBeforeUpdate, and componentDidUpdate.
           <li>
             <b>Unmounting:</b>
+            <br />
+            This phase occurs when a component is being removed from the DOM.
+            The primary lifecycle method in this phase is{" "}
+            <code>
+              <b>componentWillUnmount</b>
+            </code>
+            , which is used for cleanup tasks like invalidating timers or
+            canceling network requests.
           </li>
-          This phase occurs when a component is being removed from the DOM. The
-          primary lifecycle method in this phase is componentWillUnmount, which
-          is used for cleanup tasks like invalidating timers or canceling
-          network requests.
         </p>
       </>
     ),
@@ -443,10 +542,17 @@ export const ReactQuestions = [
     q: "What is React Router?",
     a: (
       <p>
-        React Router is a standard library for routing in React. It allows you
-        to define navigation between different components or pages in a
-        single-page application without reloading the entire page. Using
+        <b>React Router</b> is a standard library for routing in React. It
+        allows you to define navigation between different components or pages in
+        a single-page application without reloading the entire page. Using
         components like{" "}
+        <code>
+          <b>
+            &lt;BrowserRouter&gt;, &lt;Routes&gt;, &lt;Route&gt; and
+            &lt;Link&gt;
+          </b>
+        </code>{" "}
+        we can map URLs to components.
       </p>
     ),
   },
@@ -476,20 +582,22 @@ export const ReactQuestions = [
     a: (
       <>
         <p>
-          BrowserRouter uses the HTML5 history API to keep your UI in sync with
-          the URL, enabling clean URLs and navigation without page reloads.
-          HashRouter uses the hash portion of the URL (window.location.hash) to
-          simulate navigation, which is useful for static sites or environments
-          where server-side routing isn’t supported. HashRouter URLs include a #
-          (e.g., /#/about), while BrowserRouter URLs are clean (e.g., /about).
+          <b>BrowserRouter</b> uses the HTML5 history API to keep your UI in
+          sync with the URL, enabling clean URLs and navigation without page
+          reloads. <br /> <b>HashRouter</b> uses the hash portion of the URL
+          (window.location.hash) to simulate navigation, which is useful for
+          static sites or environments where server-side routing isn’t
+          supported. HashRouter URLs include a # (e.g., /#/about), while
+          BrowserRouter URLs are clean (e.g., /about).
         </p>
         <strong>or</strong>
         <p>
-          BrowserRouter uses the HTML5 history API to create clean URLs without
-          a hash (#) symbol. It requires server configuration to handle
-          client-side routing. HashRouter uses the URL hash to simulate
-          different routes and does not require server configuration, but
-          results in URLs with a # symbol.
+          <b>BrowserRouter</b> uses the HTML5 history API to create clean URLs
+          without a hash (#) symbol. It requires server configuration to handle
+          client-side routing. <br />
+          <b>HashRouter</b> uses the URL hash to simulate different routes and
+          does not require server configuration, but results in URLs with a #
+          symbol.
         </p>
       </>
     ),
@@ -500,46 +608,51 @@ export const ReactQuestions = [
       <>
         <p>
           <li>
-            <b>useNavigate:</b>
+            <b>useNavigate:</b> <br />
+            The useNavigate hook is used to programmatically navigate between
+            routes in a React application. It returns a function that can be
+            called with a path to navigate to that route. Example:
+            <pre>{`const navigate = useNavigate(); navigate('/home');`}</pre>
           </li>
-          The useNavigate hook is used to programmatically navigate between
-          routes in a React application. It returns a function that can be
-          called with a path to navigate to that route. Example:
-          <pre>{`const navigate = useNavigate(); navigate('/home');`}</pre>
           <li>
-            <b>useParams:</b>
+            <b>useParams:</b> <br />
+            The useParams hook is used to access the parameters of the current
+            route. It returns an object containing key-value pairs of the route
+            parameters. Example:
+            <pre>
+              <code>
+                {`const {id} = useParams();`} `// if route is /user/:id id will
+                hold the value of the parameter`
+              </code>
+            </pre>
           </li>
-          The useParams hook is used to access the parameters of the current
-          route. It returns an object containing key-value pairs of the route
-          parameters. Example:
-          <pre>
-            {`const {id} = useParams();`} `// if route is /user/:id id will hold
-            the value of the parameter`
-          </pre>
           <li>
             <b>useLocation:</b>
-          </li>
-          The useLocation hook is used to access the current location object,
-          which contains information about the current URL, including pathname,
-          search, and hash. Example:
-          <pre>
-            const location = useLocation();
             <br />
-            console.log(location.pathname);
-          </pre>
+            The useLocation hook is used to access the current location object,
+            which contains information about the current URL, including
+            pathname, search, and hash. Example:
+            <pre>
+              <code>
+                const location = useLocation();
+                <br />
+                console.log(location.pathname);
+              </code>
+            </pre>
+          </li>
         </p>
       </>
     ),
   },
   {
-    q: "Explain the concept of context API in React?",
+    q: "Explain the concept of Context API in React?",
     a: (
       <p>
         The Context API is a feature in React that allows you to share data
         (like global state) across the component tree without passing props
-        manually at every level. <br />
+        manually at every level.
         <strong>or</strong>
-        <br /> The Context API in React is used to manage global data that needs
+        The Context API in React is used to manage global data that needs
         to be accessed by many components without passing props manually. It
         helps eliminate prop drilling. We create a context using
         React.createContext, wrap the relevant components with a Provider, and
@@ -550,7 +663,7 @@ export const ReactQuestions = [
     ),
   },
   {
-    q: "Difference between context API & useContext?",
+    q: "Difference between Context API & useContext?",
     a: (
       <p>
         <li>
@@ -567,7 +680,7 @@ export const ReactQuestions = [
     ),
   },
   {
-    q: "When to use context over Redux or other state management libraries?",
+    q: "When to use Context API over Redux or other state management libraries?",
     a: (
       <p>
         Context is suitable for simple, low-frequency updates like themes or
@@ -794,6 +907,28 @@ export const ReactQuestions = [
         form handling across components, improving code reusability and
         cleanliness.
       </p>
+    ),
+  },
+  {
+    q: "List of Custom hooks?",
+    a: (
+      <ol>
+        <li>useToggle</li>
+        <li>useFetch</li>
+        <li>useLocalStorage</li>
+        <li>useDebounce</li>
+        <li>usePrevious</li>
+        <li>useWindowSize</li>
+        <li>useOnlineStatus</li>
+        <li>useClickOutside</li>
+        <li>useTimeout</li>
+        <li>useInterval</li>
+        <li>useForm</li>
+        <li>useHover</li>
+        <li>useClipboard</li>
+        <li>useDarkMode</li>
+        <li>useScrollPosition</li>
+      </ol>
     ),
   },
   {
@@ -1032,20 +1167,20 @@ export const ReactQuestions = [
     ),
   },
   {
-    q: "What is React StrictMode and why use it?",
+    q: "What is React Strict Mode? Why use it?",
     a: (
       <p>
-        React StrictMode is a tool for highlighting potential problems in an
+        React Strict Mode is a tool for highlighting potential problems in an
         application. It activates additional checks and warnings for its
         descendants, helping developers identify unsafe lifecycle methods,
         deprecated APIs, and other issues. It does not render any visible UI and
-        is only active in development mode. Using StrictMode can help improve
+        is only active in development mode. Using Strict Mode can help improve
         code quality and ensure that your application adheres to best practices.
       </p>
     ),
   },
   {
-    q: "What is hydration in React (esp. with SSR)",
+    q: "What is Hydration in React (esp. with SSR)",
     a: (
       <p>
         Hydration in React refers to the process of attaching event listeners
