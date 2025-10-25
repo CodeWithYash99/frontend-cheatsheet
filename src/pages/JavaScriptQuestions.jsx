@@ -1,135 +1,129 @@
 const strictLoose = `
-    console.log(5 == "5"); // true 
-    console.log(5 === "5"); // false
+  console.log(5 == "5"); // true 
+  console.log(5 === "5"); // false
 
 `;
 
-const undefinedd = `
-    let a;
-    console.log(a); // 👉 undefined
+const undefinedNullNotDefined = `
+  let a;
+  console.log(a); // 👉 undefined
 
-    function test() {}
-    console.log(test()); // 👉 undefined
+  function test() {}
+  console.log(test()); // 👉 undefined
 
-`;
+  let b = null;
+  console.log(b); // 👉 null
 
-const nulll = `
-    let b = null;
-    console.log(b); // 👉 null
-
-    if (b === null) {
-      console.log("Value is intentionally set to null");
-    }
-
-`;
-
-const notDefined = `
-    console.log(c); // ❌ ReferenceError: c is not defined
+  if (b === null) {
+    console.log("Value is intentionally set to null");
+  }
+    
+  console.log(c); // ❌ ReferenceError: c is not defined
 
 `;
 
 const namedFunctions = `
-    function greet() {
-      console.log("Hello!");
-    }
+  function greet() {
+    console.log("Hello!");
+  }
 
-    greet(); // Output: Hello!
+  greet(); // Output: Hello!
 
-  Example with Parameters:
+Example with Parameters:
 
-    function add(a, b) {
-      return a + b;
-    }
+  function add(a, b) {
+    return a + b;
+  }
 
-    console.log(add(5, 3)); // Output: 8
+  console.log(add(5, 3)); // Output: 8
 
 `;
 
 const anonymousFun = `
-    const greet = function() {
-      console.log("Hello from anonymous function");
-    };
+  const greet = function() {
+    console.log("Hello from anonymous function");
+  };
 
-    greet(); // Output: Hello from anonymous function
+  greet(); // Output: Hello from anonymous function
 
-  Immediately Invoked Function Expression (IIFE):
+Immediately Invoked Function Expression (IIFE): 
 
-    (function() {
-      console.log("IIFE running");
-    })(); // Output: IIFE running
+  (function() {
+    console.log("IIFE running");
+  })(); // Output: IIFE running
 
 `;
 
 const callbackFn = `
-    function greet(name, callback) {
-      console.log("Hello " + name); // Hello Alice
-      callback();
-    }
+  function greet(name, callback) {
+    console.log("Hello " + name); // Hello Alice
+    callback();
+  }
 
-    function sayBye() {
-      console.log("Goodbye!");  // Goodbye!
-    }
+  function sayBye() {
+    console.log("Goodbye!");  // Goodbye!
+  }
 
-    greet("Alice", sayBye);  
+  greet("Alice", sayBye);  
     
 `;
 
 const cbHell = `
-    console.log("Start");
+  console.log("Start");
+
+  setTimeout(() => {
+    console.log("1️⃣ Fetched user");
 
     setTimeout(() => {
-      console.log("1️⃣ Fetched user");
+      console.log("2️⃣ Fetched user's posts");
 
       setTimeout(() => {
-        console.log("2️⃣ Fetched user's posts");
+        console.log("3️⃣ Fetched comments on the first post");
 
-        setTimeout(() => {
-          console.log("3️⃣ Fetched comments on the first post");
-
-          // Imagine more nested calls here...
-        }, 1000);
-
+        // Imagine more nested calls here...
       }, 1000);
 
     }, 1000);
 
-    console.log("End");
+  }, 1000);
 
-    Output:
-    Start
-    End
-    1️⃣ Fetched user
-    2️⃣ Fetched user's posts
-    3️⃣ Fetched comments on the first post
+  console.log("End");
+
+  Output:
+  Start
+  End
+  1️⃣ Fetched user
+  2️⃣ Fetched user's posts
+  3️⃣ Fetched comments on the first post
 
 `;
 
 const currying = `
-    function add(a) { 
-      return function(b) { 
-        if (b !== undefined) { 
-          return add(a + b); 
-        } else { 
-          return a; 
-        } 
-      }; 
-    } 
+  function add(a) { 
+    return function(b) { 
+      if (b !== undefined) { 
+        return add(a + b); 
+      } else { 
+        return a; 
+      } 
+    }; 
+  } 
 
-    console.log(add(2)(3)(4)()); // 9
+  console.log(add(2)(3)(4)()); // 9
 
 `;
 
 const hof = `
-    function greet(name) {
-      return \`Hello, \${name}\`; 
-    }
+  function greet(name) {
+    return \`Hello, \${name}\`; 
+  }
 
-    function processUserInput(callback) {
-      const name = "Alice";
-      console.log(callback(name));
-    }
+  function processUserInput(callback) {
+    const name = "Alice";
+    console.log(callback(name));
+  }
 
-    processUserInput(greet); // Output: Hello, Alice
+  processUserInput(greet); // Output: Hello, Alice
 
 `;
 
@@ -164,89 +158,88 @@ const hoisting = `
 `;
 
 const lexical = `
-    let x = 10;
+  function outer() {
+    let x = 20;
 
-    function outer() {
-      let x = 20;
-
-      function inner() {
-        console.log(x); // Looks for x in inner scope → outer scope → global scope
-      }
-
-      inner();
+    function inner() {
+      console.log(x); // Looks for x in inner scope → outer scope → global scope
     }
 
-    outer(); // Output: 20
+    inner();
+  }
+
+  outer(); // Output: 20
 
 `;
 
 const closures = `
-    function outer() {
-      let count = 0;
+  function outer() {
+    let count = 0;
 
-      function inner() {
-        count++;
-        console.log(count);
-      }
-
-      return inner;
+    function inner() {
+      count++;
+      console.log(count);
     }
 
-    const counter = outer();
-    counter(); // Output: 1
-    counter(); // Output: 2
-    counter(); // Output: 3
+    return inner;
+  }
+
+  const counter = outer();
+  counter(); // Output: 1
+  counter(); // Output: 2
+  counter(); // Output: 3
 
 `;
 
 const thiss = `
-    // 1. Global Context (in browsers, this refers to the window object)
-      console.log(this); // In browser: Window object; in Node.js: global object
+  // 1. Global Context (in browsers, this refers to the window object)
+    console.log(this); // In browser: Window object; in Node.js: global object
 
-      function globalFunc() {
-        console.log(this); // In non-strict mode: window/global; strict mode: undefined
+    function globalFunc() {
+      console.log(this); // In non-strict mode: window/global; strict mode: undefined
+    }
+    globalFunc();
+
+  // 2. Object Method Context
+    const obj = {
+      name: "Alice",
+      greet: function() {
+        console.log(this.name);
       }
-      globalFunc();
+    };
 
-    // 2. Object Method Context
-      const obj = {
-        name: "Alice",
-        greet: function() {
-          console.log(this.name);
-        }
-      };
+    obj.greet(); // Output: Alice
 
-      obj.greet(); // Output: Alice
+  // 3. Arrow Function this (lexical binding)
+    const arrowObj = {
+      name: "Charlie",
+      greet: () => {
+        console.log(this.name);
+      }
+    };
+    arrowObj.greet(); // Output: undefined (or global name), because arrow functions don’t have their own this
 
-    // 3. Arrow Function this (lexical binding)
-      const arrowObj = {
-        name: "Charlie",
-        greet: () => {
-          console.log(this.name);
-        }
-      };
-      arrowObj.greet(); // Output: undefined (or global name), because arrow functions don’t have their own this
 `;
 
 const apb = `
-    🔹 Sample Object and Function
-        const person = {
-          name: "Alice",
-        };
+🔹 Sample Object and Function
+    const person = {
+      name: "Alice",
+    };
 
-        function greet(greeting, punctuation) {
-          console.log(greeting + ", " + this.name + punctuation);
-        }
+    function greet(greeting, punctuation) {
+      console.log(greeting + ", " + this.name + punctuation);
+    }
 
-    🔹 Using call()
-        greet.call(person, "Hello", "!"); // Output: Hello, Alice!
+🔹 Using call()
+    greet.call(person, "Hello", "!"); // Output: Hello, Alice!
 
-    🔹 Using apply()
-        greet.apply(person, ["Hi", "!!"]); // Output: Hi, Alice!!
+🔹 Using apply()
+    greet.apply(person, ["Hi", "!!"]); // Output: Hi, Alice!!
 
-    🔹 Using bind()
-        const greetPerson = greet.bind(person, "Hey");
-        greetPerson("?");   // Output: Hey, Alice?
+🔹 Using bind()
+    const greetPerson = greet.bind(person, "Hey");
+    greetPerson("?");   // Output: Hey, Alice?
 
 `;
 
@@ -261,21 +254,21 @@ const iife = `
 `;
 
 const fdfe = `
-  // 1. Function declaration:
-      sayHello(); // Works because of hoisting
+  1. Function declaration:
+    sayHello(); // Works because of hoisting
 
-      function sayHello() {
-        console.log("Hello from function declaration!");
-      }
+    function sayHello() {
+      console.log("Hello from function declaration!");
+    }
 
-  // 2. Function Expression:
-      // sayHi(); // Uncaught ReferenceError: Cannot access 'sayHi' before initialization (if using let/const)
+  2. Function Expression:
+    // sayHi(); // Uncaught ReferenceError: Cannot access 'sayHi' before initialization (if using let/const)
 
-      const sayHi = function() {
-        console.log("Hello from function expression!");
-      };
+    const sayHi = function() {
+      console.log("Hello from function expression!");
+    };
 
-      sayHi(); // Works here
+    sayHi(); // Works here
 
 `;
 
@@ -748,38 +741,59 @@ const throttling = `
 
 `;
 
-const destructuring = `
-  ✅ Array Destructuring                            ✅ Object Destructuring
-      const colors = ["red", "green", "blue"];            const user = {
-                                                            name: "Alice",
-      const [first, second] = colors;                       age: 25,
-                                                            city: "Paris"
-      console.log(first);  // "red"                       };
-      console.log(second); // "green"                     
-                                                          const { name, city } = user;
+const destructuringArr = `
+  const colors = ["red", "green", "blue"];            
+                                                        
+  const [first, second] = colors;                       
+                                                        
+  console.log(first);  // "red"                       
+  console.log(second); // "green"                     
+                                                          
+`;
 
-                                                          console.log(name); // "Alice"
-                                                          console.log(city); // "Paris"
+const destructuringObj = `
+  const user = {
+    name: "Alice",
+    age: 25,
+    city: "Paris"
+  };
+
+  const { name, city } = user;
+
+  console.log(name); // "Alice"
+  console.log(city); // "Paris"
+
 `;
 
 const spreadOp = `
-  ✅ Spread in Arrays                               ✅ Spread in Objects
-      const a = [1, 2, 3];                                const obj1 = { a: 1, b: 2 };
-      const b = [4, 5];                                   const obj2 = { c: 3 };
+✅ Spread in Arrays:                            
+    const a = [1, 2, 3];                                
+    const b = [4, 5];             
+    const combined = [...a, ...b];                      
 
-      const combined = [...a, ...b];                      const merged = { ...obj1, ...obj2 };
+    console.log(combined); // [1, 2, 3, 4, 5]           
 
-      console.log(combined); // [1, 2, 3, 4, 5]           console.log(merged); // { a: 1, b: 2, c: 3 }
+✅ Spread in Objects:
+    const obj1 = { a: 1, b: 2 };
+    const obj2 = { c: 3 };
+    const merged = { ...obj1, ...obj2 };
+
+    console.log(merged); // { a: 1, b: 2, c: 3 }
 
 `;
 
 const restOp = `
-  ✅ Rest in Arrays                                 ✅ Rest in Objects
-      const [first, ...rest] = [10, 20, 30, 40];          const user = { name: "Tom", age: 30, city: "London" };
-                                                          const { name, ...others } = user;
-      console.log(first); // 10
-      console.log(rest);  // [20, 30, 40]                 console.log(name);   // "Tom"
-                                                          console.log(others); // { age: 30, city: "London" }
+✅ Rest in Arrays:                             
+    const [first, ...rest] = [10, 20, 30, 40];          
+                                                        
+    console.log(first); // 10
+    console.log(rest);  // [20, 30, 40]                 
+                                                        
+✅ Rest in Objects:
+    const user = { name: "Tom", age: 30, city: "London" };
+    const { name, ...others } = user;
+    console.log(name);   // "Tom"
+    console.log(others); // { age: 30, city: "London" }
 
 `;
 
@@ -793,21 +807,28 @@ const stringLiterals = `
 `;
 
 const firstClassFn = `
-    ✅ Example 1: Assigning a Function to a Variable
-        const sayHello = function () {
-        console.log("Hello!");
-      };
+✅ Example 1: Assigning a Function to a Variable
+    const sayHello = function () {
+    console.log("Hello!");
+  };
 
-      sayHello(); // ✅ Function stored and called from a variable
+  sayHello(); // ✅ Function stored and called from a variable
 
-    ✅ Example 2: Passing Function as an Argument
-        function greet(callback) {
-          callback();
-        }
+✅ Example 2: Passing Function as an Argument
+    function greet(callback) {
+      callback();
+    }
 
-        greet(() => {
-          console.log("👋 Hello from callback!");
-        });
+    greet(() => {
+      console.log("👋 Hello from callback!");
+    });
+
+`;
+
+const dynamic = `
+  import('./utils.js').then(module => {
+    module.doSomething();
+  });
 
 `;
 
@@ -827,41 +848,71 @@ const generators = `
 
 `;
 
+const memo = `
+  function memoizedAdd() {
+    const cache = {};
+    return function(n) {
+      if (cache[n]) return cache[n];
+      console.log('Calculating...');
+      cache[n] = n + 10;
+      return cache[n];
+    };
+  }
+  const add = memoizedAdd();
+  add(5); // calculates
+  add(5); // returns from cache
+
+`;
+
 export const JavaScriptQuestions = [
   {
     q: "What is JavaScript?",
     a: (
-      <p>
-        JavaScript is a programming language and it is used for adding dynamic
-        functionality to HTML content. Mainly used for make web page,
-        applications dynamically. with only HTML, CSS we make static pages.
-        JavaScript will do the dynamic functionality. <br />
-        <br />
-        The browser has a built-in JavaScript engine that is responsible for
-        interpreting and executing JavaScript code. <br />
-        <br />
-        Modern web browsers using JIT (Just in Time) which compiles the
-        JavaScript to executable byte code.
-      </p>
+      <>
+        <p className="ans-para">
+          JavaScript is a high-level, interpreted programming language that adds
+          interactivity and dynamic behavior to web pages. While HTML defines
+          the structure and CSS handles the styling, JavaScript controls how a
+          page behaves — things like handling user interactions, updating the
+          DOM in real time, and communicating with APIs.
+        </p>
+        <p className="ans-para">
+          In front-end development, JavaScript is essential for creating
+          responsive, interactive user experiences. Modern JavaScript (ES6 and
+          later) introduces features like arrow functions, modules, promises,
+          and async/await, which can make the code more efficient and readable.
+        </p>
+        <p>
+          I also use JavaScript with frameworks and libraries like React to
+          build component-based UIs and manage application state more
+          effectively.
+        </p>
+      </>
     ),
   },
   {
     q: "How do browsers run code?",
     a: (
       <>
-        <li>The browser first downloads the HTML and CSS files.</li>
         <li>
-          The HTML document is parsed by the HTML parser into the DOM (Document
-          Object Model), which is a tree structure representing the elements on
-          the page.
+          When a browser loads a web page, it first parses the HTML to build the
+          DOM (Document Object Model) and CSS to build the CSSOM.
         </li>
         <li>
-          The CSS is parsed into a CSSOM (CSS Object Model), which describes the
-          styles for each element.
+          When it encounters JavaScript, the JavaScript engine takes over. The
+          engine parses the JS code, compiles it into machine code using
+          Just-In-Time (JIT) compilation, and then executes it.
         </li>
         <li>
-          Once the HTML and CSS are parsed, the browser encounters any
-          JavaScript code embedded in the HTML or loaded via external files
+          The browser also has a call stack, heap, and event loop to manage
+          synchronous and asynchronous tasks. Through the Web APIs (like
+          setTimeout, fetch, or DOM manipulation), JavaScript interacts with the
+          browser environment.
+        </li>
+        <li>
+          Finally, any changes to the DOM or CSSOM trigger the browser’s
+          rendering pipeline — which handles layout, painting, and compositing —
+          to update what the user sees on the screen.
         </li>
       </>
     ),
@@ -869,55 +920,123 @@ export const JavaScriptQuestions = [
   {
     q: "What are the features of JavaScript?",
     a: (
-      <p>
-        Dynamic typing, case sensitive, client side, Async processing, Event
-        Handling, platform Independent.
-      </p>
+      <>
+        <p className="ans-para">
+          JavaScript is a lightweight, interpreted programming language that
+          adds interactivity to web pages. Some of its key features include
+          dynamic typing, prototype-based object orientation, and first-class
+          functions — meaning functions can be treated like variables.
+        </p>
+        <p className="ans-para">
+          It’s also event-driven and supports asynchronous programming using
+          promises and async/await, which helps manage tasks like API calls
+          smoothly.
+        </p>
+        <p>
+          Plus, JavaScript integrates directly with HTML and CSS, making it
+          essential for creating responsive, interactive front-end applications.
+        </p>
+      </>
     ),
   },
   {
     q: "What are advantages of JavaScript?",
     a: (
-      <p>
-        Easy to learn, Interpreted language, Client-side validation, Rich UI,
-        Reduced server interaction, Platform Independent, Object-oriented
-        programming, Popular language, Response to user activity, Updates.
-      </p>
+      <>
+        <p className="ans-para">
+          JavaScript is fast, flexible, and essential for making web pages
+          interactive. It runs directly in the browser, so there is no need for
+          compilation, and it is supported by all major browsers.
+        </p>
+        <p className="ans-para">
+          It is also very versatile — we can use it for front-end, back-end, or
+          even mobile apps.
+        </p>
+        <p>
+          Plus, the community and ecosystem are huge, with frameworks like React
+          that make development faster and easier.
+        </p>
+      </>
     ),
   },
   {
     q: "What are data types in JS?",
     a: (
-      <p>
-        In JavaScript data are divided into two types. They are primitive and
-        non- primitive.
-        <br />
-        <b>Primitive types:</b> string, number, boolean, null, undefined,
-        symbol.
-        <br />
-        <b>Non-primitive types:</b> object (arrays, functions, objects).
-      </p>
+      <>
+        <p className="ans-para">
+          JavaScript data types are mainly divided into primitive and
+          non-primitive types.
+        </p>
+        <p className="ans-para">
+          Primitive types include String, Number, Boolean, Undefined, Null,
+          BigInt, and Symbol.
+        </p>
+        <p className="ans-para">
+          The only non-primitive type is Object, which also includes arrays and
+          functions.
+        </p>
+        <p>
+          The key difference is that primitive values are stored by value, while
+          objects are stored and passed by reference.
+        </p>
+        <strong>Follow-up questions:</strong>
+        <p>
+          - What do you mean by ‘stored by value’ and ‘stored by reference’?
+        </p>
+        <p>- Is an array a primitive or an object?</p>
+        <p>- What’s the difference between null and undefined?</p>
+        <p>- What is BigInt used for?</p>
+        <p>- What is a Symbol?</p>
+        <p>- Are functions objects in JavaScript?</p>
+      </>
     ),
   },
   {
     q: "What are variables in JS?",
     a: (
-      <p>
-        Variables are containers for storing data values. In JavaScript, we use
-        the keywords <b>var, let</b> and <b>const</b> to declare variables.
-      </p>
+      <>
+        <p>
+          - In JavaScript, variables are containers used to store data values
+          that can be changed or accessed later in the program.
+        </p>
+        <p>
+          - We can declare them using <b>var, let,</b> or <b>const</b>.
+        </p>
+        <p>
+          - <b>var</b> is <b>function-scoped</b>, while <b>let</b> and{" "}
+          <b>const</b> are block-scoped, with const being used for values that
+          shouldn’t change.
+        </p>
+        <p>
+          - Variables can hold different types of data, like numbers, strings,
+          or objects, and they play a key role in making programs dynamic and
+          interactive.
+        </p>
+      </>
     ),
   },
   {
     q: "What are var, let and const?",
     a: (
-      <p>
-        <b>var:</b> function-scoped, can be re-declared and updated. <br />
-        <b>let:</b> block-scoped, cannot be re-declared but can be updated.
-        <br />
-        <b>const:</b> block-scoped, cannot be re-declared or updated (must be
-        initialized at declaration).
-      </p>
+      <>
+        <p>
+          - In JavaScript, <b>var, let,</b> and <b>const</b> are used to declare
+          variables.
+        </p>
+        <p>
+          - <b>var</b> is <b>function-scoped</b> and can be redeclared, but it
+          has some unexpected behaviors like hoisting that can cause bugs.
+        </p>
+        <p>
+          - <b>let</b> is <b>block-scoped</b>, can be updated but not redeclared
+          in the same scope, making it safer than <b>var</b>.
+        </p>
+        <p>
+          - <b>const</b> is also <b>block-scoped</b>, but its value cannot be
+          reassigned after declaration. Choosing between them depends on whether
+          you need a variable to change or stay constant.
+        </p>
+      </>
     ),
   },
   {
@@ -925,57 +1044,86 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          <b>Strict mode</b> is a feature in JavaScript that enforces stricter
-          parsing and error handling. When enabled with <b>"use strict"</b>, it
-          helps to catch common coding mistakes, prevents unsafe actions, and
-          improves performance in some cases.
-        </p>
-        <strong>or</strong>
-        <p>
-          <b>"use strict"</b> is a directive that enables strict mode in
-          JavaScript. It helps catch common coding mistakes and unsafe actions,
-          such as using undeclared variables. It can be applied to an entire
-          script or to individual functions.
+          In JavaScript, <b>use strict</b> is a directive that enables strict
+          mode, which helps catch common coding mistakes and unsafe actions. For
+          example, it prevents using undeclared variables, disallows duplicate
+          parameter names, and makes assignments to read-only properties throw
+          errors. Strict mode makes your code more secure and easier to debug.
+          You can enable it for an entire script or for individual functions by
+          placing{" "}
+          <code>
+            <b>'use strict';</b>
+          </code>{" "}
+          at the top.
         </p>
       </>
     ),
   },
   {
-    q: "What is the use of constructor function?",
+    q: "What is the use of constructor function in JS?",
     a: (
-      <p>
-        A constructor function is used to create and initialize objects in
-        JavaScript. It is a special type of function that is called with the new
-        keyword to create a new instance of an object. The constructor function
-        typically defines properties and methods for the object being created.
-      </p>
+      <>
+        <p>
+          - In JavaScript, a constructor function is used to create multiple
+          objects with the same structure and behavior.
+        </p>
+        <p>
+          - It acts like a blueprint — it will allows you define properties and
+          methods inside the function, and then use the{" "}
+          <code>
+            <b>new</b>
+          </code>{" "}
+          keyword to create new object instances.
+        </p>
+        <p>
+          - Constructor functions help organize code, avoid repetition, and make
+          it easier to work with multiple similar objects in a program.
+        </p>
+      </>
     ),
   },
   {
     q: "What are JavaScript engines?",
     a: (
-      <p>
-        A JavaScript engine is a program or interpreter that executes JavaScript
-        code. It is responsible for parsing, interpreting, and executing the
-        JavaScript code in a web browser or other runtime environment. Examples
-        of popular JavaScript engines include V8 (used in Google Chrome and
-        Node.js), SpiderMonkey (used in Mozilla Firefox), and JavaScriptCore
-        (used in Safari).
-      </p>
+      <>
+        <p>
+          - A JavaScript engine is a program or interpreter that executes
+          JavaScript code.
+        </p>
+        <p>
+          - Every browser has its own engine — for example, Chrome uses V8,
+          Firefox uses SpiderMonkey, and Safari uses JavaScriptCore.
+        </p>
+        <p>
+          - The engine reads the JavaScript code, parses it, compiles it into
+          machine code, and executes it.
+        </p>
+        <p>
+          - Modern engines also use Just-In-Time compilation to make the code
+          run faster, which is why JavaScript can be both flexible and
+          performant in the browser.
+        </p>
+      </>
     ),
   },
   {
-    q: "What is ECMAScript?",
+    q: "What is ECMAScript in JS?",
     a: (
-      <p>
-        <b>ECMAScript</b> is a{" "}
-        <b>standardized scripting language specification</b> that serves as the{" "}
-        <b>foundation for JavaScript</b>. It defines the{" "}
-        <b>syntax, types, statements, keywords,</b> and other{" "}
-        <b>core features</b> of the language. The <b>latest version</b> of
-        ECMAScript is <b>ECMAScript 2021 (ES12)</b>, which includes{" "}
-        <b>new features</b> and <b>improvements</b> to the language.
-      </p>
+      <>
+        <p>
+          - ECMAScript, often abbreviated as ES, is the standard specification
+          that defines how JavaScript should work.
+        </p>
+        <p>
+          - JavaScript is an implementation of ECMAScript. This standard ensures
+          that all browsers behave consistently when running JavaScript code.
+        </p>
+        <p>
+          - Over the years, ECMAScript has introduced important updates like
+          ES6, which brought features like classes, arrow functions, template
+          literals, and modules, making JavaScript more modern and powerful.
+        </p>
+      </>
     ),
   },
   {
@@ -983,151 +1131,318 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          <b>==</b> is the <b>loose equality operator</b>. It checks if{" "}
-          <b>values are equal after type coercion</b>, meaning it tries to{" "}
-          <b>convert the values to the same type</b> before comparing. <br />
-          <b>===</b> is the <b>strict equality operator</b>. It checks both{" "}
-          <b>value and type</b>, so it avoids <b>unexpected results</b> caused
-          by <b>type conversion</b>.
-          <pre>
-            <code>{strictLoose}</code>
-          </pre>
+          In JavaScript,
+          <li>
+            <code>
+              <b>==</b>
+            </code>{" "}
+            is the equality operator that compares values after performing type
+            coercion, meaning it converts the types if they are different.
+          </li>
+          <li>
+            On the other hand,{" "}
+            <code>
+              <b>===</b>
+            </code>{" "}
+            is the strict equality operator, which compares both value and type
+            without converting them.
+          </li>
+          <li>
+            It is generally recommended to use{" "}
+            <code>
+              <b>===</b>
+            </code>{" "}
+            to avoid unexpected results caused by type coercion.
+          </li>
+          <li>
+            For example,{" "}
+            <code>
+              <b>5 == '5'</b>
+            </code>{" "}
+            is true, but{" "}
+            <code>
+              <b>5 === '5'</b>
+            </code>{" "}
+            is false because one is a number and the other is a string.
+          </li>
         </p>
-        <strong>or</strong>
+        <pre>{strictLoose}</pre>
+      </>
+    ),
+  },
+  {
+    q: "Difference between Undefined, Null, and not defined in JS?",
+    a: (
+      <>
         <p>
-          <b>==</b> is the abstract equality operator that performs type
-          coercion before comparison, while <b>===</b> is the strict equality
-          operator that checks for both value and type equality without type
-          coercion.
+          In JavaScript,
+          <li>
+            <code>
+              <b>undefined</b>
+            </code>{" "}
+            means a variable has been declared but not assigned any value.
+          </li>
+          <li>
+            <code>
+              <b>null</b>
+            </code>{" "}
+            is an intentional assignment that represents <b>‘no value’</b> or an{" "}
+            <b>empty object</b>.
+          </li>
+          <li>
+            On the other hand,{" "}
+            <code>
+              <b>‘not defined’</b>
+            </code>{" "}
+            occurs when you try to access a variable that hasn’t been declared
+            at all, which will throw a reference error. Understanding these
+            differences helps to prevent runtime errors and makes code more
+            predictable.
+          </li>
+        </p>
+        <pre>{undefinedNullNotDefined}</pre>
+      </>
+    ),
+  },
+  {
+    q: "What are Functions in JS?",
+    a: (
+      <>
+        <p>
+          - In JavaScript, a function is a reusable block of code that performs
+          a specific task.
+        </p>
+        <p>
+          - Functions help organize code, reduce repetition, and make programs
+          more modular.
+        </p>
+        <p>
+          - We can define a function using the{" "}
+          <code>
+            <b>function</b>
+          </code>{" "}
+          keyword, or with arrow function syntax in ES6.
+        </p>
+        <p>
+          - Functions can take parameters as input, perform operations, and
+          return a value.
+        </p>
+        <p>
+          - For example, a function{" "}
+          <code>
+            <b>add(a, b)</b>
+          </code>{" "}
+          can take two numbers and return their sum, which can be used anywhere
+          in your program.
         </p>
       </>
     ),
   },
   {
-    q: "Difference between Undefined, Null, and not defined?",
-    a: (
-      <p>
-        <b>Undefined</b> means a <b>variable has been declared</b> but has{" "}
-        <b>not yet been assigned a value</b>.
-        <pre>
-          <code>{undefinedd}</code>
-        </pre>
-        <b>Null</b> is an <b>assignment value</b> that represents the
-        <b> intentional absence</b> of any <b>object value</b>.
-        <pre>
-          <code>{nulll}</code>
-        </pre>
-        <br /> <b>Not defined</b> means a <b>variable has not been declared</b>{" "}
-        in the <b>current scope</b>.
-        <pre>
-          <code>{notDefined}</code>
-        </pre>
-      </p>
-    ),
-  },
-  {
-    q: "What are Functions?",
+    q: "What are Named functions (Function Declaration) in JS?",
     a: (
       <>
         <p>
-          <b>Functions</b> are <b>reusable blocks of code to perform task</b>{" "}
-          and its <b>accepts input parameters</b> and <b>returns output</b>.
+          - In JavaScript, a <b>named function</b> is a function that has a
+          specific name when it is declared using the function keyword.
         </p>
-        <strong>or</strong>
         <p>
-          Functions are reusable blocks of code that perform a specific task.
-          They can take inputs (parameters), execute a series of statements, and
-          optionally return a value. Functions help organize code, improve
-          readability, and promote code reuse.
+          - This name can be used to call the function anywhere in the scope
+          it’s defined.
+        </p>
+        <p>
+          - Named functions are useful because they make code more readable,
+          help with debugging by showing the function name in stack traces, and
+          can be recursive.
+        </p>
+        <p>
+          - For example,{" "}
+          <code>
+            <b>function greet(){"{ console.log('Hello'); }"}</b>
+          </code>{" "}
+          is a named function that can be called using{" "}
+          <code>
+            <b>greet().</b>
+          </code>
+        </p>
+        <pre>{namedFunctions}</pre>
+      </>
+    ),
+  },
+  {
+    q: "What is Anonymous function (Function Expression) in JS?",
+    a: (
+      <>
+        <p>
+          - In JavaScript, an{" "}
+          <code>
+            <b>anonymous function</b>
+          </code>{" "}
+          is a function that <b>does not have a name</b> when it is defined.
+        </p>
+        <p>
+          - These functions are often used as <b>callback functions</b> or
+          assigned to variables.
+        </p>
+        <p>
+          - For example,{" "}
+          <code>
+            <b>const greet = function() {"{ console.log('Hello');"}</b>
+          </code>
+          defines an anonymous function assigned to{" "}
+          <code>
+            <b>greet</b>
+          </code>
+          .
+        </p>
+        <p>
+          - Anonymous functions are useful for short, one-time tasks and for
+          keeping the code concise, especially in events, timers, or array
+          methods like{" "}
+          <code>
+            <b>map</b>
+          </code>{" "}
+          and{" "}
+          <code>
+            <b>forEach</b>
+          </code>
+          .
+        </p>
+        <pre>{anonymousFun}</pre>
+      </>
+    ),
+  },
+  {
+    q: "What is Arrow functions in JS?",
+    a: (
+      <>
+        <p>
+          - Arrow functions in JavaScript are a concise way to write functions
+          using the{" "}
+          <code>
+            <b>{"=>"}</b>
+          </code>{" "}
+          syntax introduced in ES6.
+        </p>
+        <p>
+          - They are often shorter than traditional functions and don’t have
+          their own{" "}
+          <code>
+            <b>this, arguments, or super</b>
+          </code>
+          , which makes them useful in callbacks or methods where you want to
+          preserve the outer{" "}
+          <code>
+            <b>this</b>
+          </code>{" "}
+          context.
+        </p>
+        <p>
+          - For example,{" "}
+          <code>
+            <b>{"const add = (a, b) => a + b;"}</b>
+          </code>{" "}
+          is an arrow function that returns the sum of <b>a</b> and <b>b</b>.
+          They make code cleaner and easier to read.
         </p>
       </>
     ),
   },
   {
-    q: "What are Named functions in JavaScript?",
+    q: "Difference between Arrow functions & Regular functions in JS?",
     a: (
       <>
         <p>
-          Using the function keyword followed by a name that can be used as a
-          callback to that function is known as named function. Named functions
-          are regular JavaScript functions having name or identifier.
-          <pre>
-            <code>{namedFunctions}</code>
-          </pre>
+          - The main differences between arrow functions and regular functions
+          in JavaScript are about syntax and behavior.
         </p>
-        <strong>or</strong>
         <p>
-          Named functions are functions that have a specific name assigned to
-          them. They are defined using the function keyword followed by the
-          function name and parentheses. Named functions can be called by their
-          name and can be used as callbacks or event handlers.
+          - Arrow functions have a shorter syntax and don’t have their own{" "}
+          <code>
+            <b>this</b>
+          </code>
+          , arguments, or super, so they inherit{" "}
+          <code>
+            <b>this</b>
+          </code>{" "}
+          from the surrounding scope.
+        </p>
+        <p>
+          - Regular functions, declared with the function keyword, have their
+          own{" "}
+          <code>
+            <b>this</b>
+          </code>{" "}
+          and can be used as constructors with{" "}
+          <code>
+            <b>new</b>
+          </code>
+          .
+        </p>
+        <p>
+          - Arrow functions are great for callbacks and concise code, while
+          regular functions are better when you need dynamic{" "}
+          <code>
+            <b>this</b>
+          </code>{" "}
+          or constructors.
         </p>
       </>
     ),
   },
   {
-    q: "What is Anonymous function?",
+    q: "What is Callback function in JS?",
     a: (
       <>
         <p>
-          An anonymous function is a function without a name, often used as a
-          quick, one-time function—for example, in callbacks or event handlers.
-          <pre>
-            <code>{anonymousFun}</code>
-          </pre>
+          - In JavaScript, a{" "}
+          <code>
+            <b>callback function</b>
+          </code>{" "}
+          is a function that is passed as an argument to another function and is
+          executed after some operation is completed.
         </p>
-        <strong>or</strong>
         <p>
-          An anonymous function is a function that does not have a name assigned
-          to it. It is often used as a callback or passed as an argument to
-          other functions. Anonymous functions can be defined using function
-          expressions or arrow functions.
+          - Callbacks are commonly used for asynchronous tasks like API calls,
+          timers, or events.
         </p>
+        <p>
+          - For example, in{" "}
+          <code>
+            <b>{"setTimeout(() => { console.log('Hello'); }, 1000);"}</b>
+          </code>
+          , the arrow function is a callback that runs after one second.
+        </p>
+        <p>
+          - Callbacks help manage the flow of code and ensure certain operations
+          happen only after others are finished.
+        </p>
+        <pre>{callbackFn}</pre>
       </>
     ),
   },
   {
-    q: "what is Callback function",
+    q: "What is Callback hell in JS?",
     a: (
       <>
         <p>
-          A callback function in JavaScript is a function that is passed into
-          another function as an argument, and it's called later — usually after
-          some operation finishes.
-          <pre>
-            <code>{callbackFn}</code>
-          </pre>
+          - Callback hell in JavaScript happens when you have{" "}
+          <b>multiple nested callback functions</b>, often in asynchronous code,
+          making it hard to read, maintain, and debug.
         </p>
-        <strong>or</strong>
         <p>
-          A callback function is a function passed as an argument to another
-          function, which is then invoked inside the outer function to complete
-          some kind of routine or action.
+          - It usually looks like a pyramid or ‘rightward-slanting’ code
+          structure.
         </p>
-      </>
-    ),
-  },
-  {
-    q: "What is Callback hell",
-    a: (
-      <>
         <p>
-          Callback hell, where multiple nested callbacks make the code difficult
-          to read, understand, and maintain. Each function depends on the result
-          of the previous one, creating deeply nested code that’s: Hard to read,
-          Hard to debug, Hard to handle errors, Hard to scale.
-          <pre>
-            <code>{cbHell}</code>
-          </pre>
+          - For example, multiple setTimeout or API calls nested inside each
+          other can create callback hell.
         </p>
-        <strong>or</strong>
         <p>
-          Callback hell refers to a situation in JavaScript where multiple
-          nested callback functions make the code difficult to read and
-          maintain. This often occurs in asynchronous programming when each
-          callback depends on the result of the previous one, leading to deeply
-          nested and complex code structures.
+          - To avoid it, developers use Promises, async/await, or modular
+          functions to keep the code clean and readable.
         </p>
+        <pre>{cbHell}</pre>
       </>
     ),
   },
@@ -1136,47 +1451,61 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          Currying is a technique in JavaScript where a function doesn't take
-          all its arguments at once. Instead, it takes them one at a time,
-          returning a new function at each step that takes the next argument.
-          This allows us to create more reusable and flexible functions.
-          <pre>
-            <code>{currying}</code>
-          </pre>
+          - Currying in JavaScript is a technique where a function with multiple
+          arguments is transformed into a sequence of <b>nested functions</b>,
+          each taking <b>one argument at a time</b>.
         </p>
-        <strong>or</strong>
         <p>
-          Currying is a functional programming technique in JavaScript where a
-          function with multiple arguments is transformed into a sequence of
-          functions, each taking a single argument. This allows for partial
-          application of functions and can enhance code reusability and
-          readability.
+          - It helps in <b>reusing functions and creating more flexible code</b>
+          .
         </p>
+        <p>
+          - For example, a
+          <code>
+            <b>function add(a, b)</b>
+          </code>{" "}
+          can be curried as{" "}
+          <code>
+            <b>add(a)(b)</b>
+          </code>{" "}
+          so you can call{" "}
+          <code>
+            <b>add(2)(3)</b>
+          </code>{" "}
+          to get 5.
+        </p>
+        <p>
+          - Currying is often used in functional programming to make code
+          modular and composable.
+        </p>
+        <pre>{currying}</pre>
       </>
     ),
   },
   {
-    q: "What is Higher Order Function",
+    q: "What is Higher Order Function JavaScript?",
     a: (
       <>
         <p>
-          A Higher Order Function in JavaScript is a function that either takes
-          one or more functions as arguments, or returns a function as its
-          result. <br />
-          They're powerful tools for functional programming and are used in many
-          places, like array methods (map, filter, reduce) and utilities like
-          setTimeout or custom logic handlers.
-          <pre>
-            <code>{hof}</code>
-          </pre>
+          - A Higher Order Function in JavaScript is a function that either
+          takes another function as an argument, returns a function, or both.
         </p>
-        <strong>or</strong>
         <p>
-          A higher-order function is a function that either takes one or more
-          functions as arguments or returns a function as its result. They are
-          commonly used in functional programming to create more abstract and
-          reusable code.
+          - They is a key concept in functional programming and helps to make
+          code more modular and reusable.
         </p>
+        <p>
+          - Examples include array methods like map, filter, and reduce, which
+          take callback functions to process data.
+        </p>
+        <p>
+          - For instance,{" "}
+          <code>
+            <b>[1,2,3].map(n =&gt; n * 2)</b>
+          </code>{" "}
+          uses a higher-order function map with an arrow function as a callback.
+        </p>
+        <pre>{hof}</pre>
       </>
     ),
   },
@@ -1191,38 +1520,96 @@ export const JavaScriptQuestions = [
           const are hoisted too but are not initialized, so using them before
           declaration gives a ReferenceError. Function declarations are hoisted
           completely, so you can call them before their definition in the code.
-          <pre>
-            <code>{hoisting}</code>
-          </pre>
         </p>
+        <pre>{hoisting}</pre>
         <strong>or</strong>
         <p>
-          Hoisting is a JavaScript mechanism where variable and function
-          declarations are moved to the top of their containing scope during the
-          compilation phase, allowing them to be used before their actual
-          declaration in the code.
+          - Hoisting in JavaScript is a behavior where variable and function
+          declarations are moved to the top of their scope during the
+          compilation phase.
+        </p>
+        <p>
+          - This means you can access functions or variables before they are
+          actually declared in the code.
+        </p>
+        <p>
+          - For example, calling a function declared with{" "}
+          <code>
+            <b>function greet() {}</b>
+          </code>
+          works even if it appears later in the code.
+        </p>
+        <p>
+          - However, variables declared with var are hoisted but initialized as
+          undefined, while let and const are hoisted but remain in a ‘temporal
+          dead zone’ until their declaration.
         </p>
       </>
     ),
   },
   {
-    q: "What is Lexical scoping?",
+    q: "What is Temporal Dead Zone (TDZ) in JS?",
     a: (
       <>
         <p>
-          Lexical scope is the ability for a function scope to access variables
-          from the parent scope. we can take the example of scope chain.
-          <pre>
-            <code>{lexical}</code>
-          </pre>
+          - The Temporal Dead Zone (TDZ), in JavaScript is the period between
+          the start of a block and the point where a variable declared with let
+          or const is initialized.
         </p>
-        <strong>or</strong>
         <p>
-          Lexical scoping is a concept in JavaScript where the scope of a
-          variable is determined by its position in the source code. Inner
-          functions have access to variables defined in their outer (parent)
-          functions, allowing for nested scopes and closures.
+          - During this time, if you try to access the variable, JavaScript will
+          throw a ReferenceError.
         </p>
+        <p>
+          - TDZ exists to prevent variables from being used before they are
+          properly declared and initialized, making code safer.
+        </p>
+        <p>
+          - For example,{" "}
+          <code>
+            <b>console.log(a); let a = 5;</b>
+          </code>{" "}
+          will throw an error because a is in the TDZ.
+        </p>
+      </>
+    ),
+  },
+  {
+    q: "How to stop Hoisting in JS?",
+    a: (
+      <>
+        <p>
+          - Always declare your variables at the top of their scope. This will
+          make your code more readable and easier to maintain.
+        </p>
+        <p>
+          - Use the <b>let</b> or <b>const</b> keywords to declare your
+          variables instead of the <b>var</b> keyword.
+        </p>
+        <p>- Use JavaScript's strict mode.</p>
+      </>
+    ),
+  },
+  {
+    q: "What is Lexical scoping in JS?",
+    a: (
+      <>
+        <p>
+          - Lexical scoping in JavaScript means that a function’s scope is
+          determined by where it is defined in the source code, not where it is
+          called.
+        </p>
+        <p>
+          - Inner functions have access to variables defined in their outer
+          enclosing functions, but outer functions cannot access variables
+          inside inner functions.
+        </p>
+        <p>
+          - This is fundamental to closures. For example, if a function is
+          defined inside another function, it can use the outer function’s
+          variables even when called later.
+        </p>
+        <pre>{lexical}</pre>
       </>
     ),
   },
@@ -1231,76 +1618,73 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          Closures allow functions to access variables from their outer scope
-          even after the outer function has finished executing. This is useful
-          for creating private variables and functions, as well as for
-          maintaining state in asynchronous code.
-          <pre>
-            <code>{closures}</code>
-          </pre>
+          A closure in JavaScript is a function that remembers and has access to
+          variables from its outer function even after the outer function has
+          finished executing. Closures are useful for creating private
+          variables, data encapsulation, and maintaining state in functions.
         </p>
-        <strong>or</strong>
-        <p>
-          A closure is a feature in JavaScript where an inner function has
-          access to the outer (enclosing) function's variables and parameters,
-          even after the outer function has returned. Closures are commonly used
-          for data privacy and creating function factories.
-        </p>
+        <pre>{closures}</pre>
       </>
     ),
   },
   {
-    q: "this bind",
+    q: "What is `this` keyword in JS?",
     a: (
       <>
         <p>
-          In JavaScript, this refers to the object that is calling the function.{" "}
-          <br />
-          In regular functions, this is dynamic — it changes depending on how
-          the function is called.
-          <br /> But in arrow functions, this is lexically bound — it uses this
-          from the place where the function was defined, not from where it's
+          - In JavaScript, this refers to the object in which a function is
           called.
-          <pre>
-            <code>{thiss}</code>
-          </pre>
         </p>
-        <strong>or</strong>
         <p>
-          In JavaScript, this refers to the context in which a function is
-          called. In regular functions, this is dynamic and can change based on
-          how the function is invoked. In arrow functions, this is lexically
-          bound, meaning it retains the value of this from the surrounding scope
-          where the arrow function was defined.
+          - In regular functions, this is dynamic and can change based on how
+          the function is invoked.
         </p>
+        <p>
+          - In arrow functions, this is lexically bound, meaning it retains the
+          value of this from the surrounding scope where the arrow function was
+          defined.
+        </p>
+        <pre>{thiss}</pre>
       </>
     ),
   },
   {
-    q: "How call(), apply() & bind() is used?",
+    q: "How call(), apply() & bind() is used in JS?",
     a: (
       <>
         <p>
-          In JavaScript, call (), apply (), and bind () are ways to control this
-          value in JavaScript. <br />
-          <b>call()</b> runs the function immediately and passes arguments one
-          by one. <br />
-          <b>apply()</b> is the same, but takes arguments as an array.
-          <br /> <b>bind()</b> doesn’t run the function right away — it returns
-          a new function with this locked in.
-          <pre>
-            <code>{apb}</code>
-          </pre>
+          - In JavaScript,{" "}
+          <code>
+            <b>call(), apply (), bind ()</b>
+          </code>{" "}
+          are used to explicitly set the value of <b>this</b> inside a function.
         </p>
-        <strong>or</strong>
         <p>
-          call(), apply(), and bind() are methods in JavaScript that allow you
-          to set the value of this in a function. call() and apply() invoke the
-          function immediately, with call() taking arguments individually and
-          apply() taking them as an array. bind() returns a new function with
-          this permanently set to the specified value, without invoking it
-          immediately.
+          -{" "}
+          <code>
+            <b>call()</b>
+          </code>{" "}
+          - Invokes a function immediately with a specified <b>this</b> value
+          and arguments provided individually.
         </p>
+        <p>
+          -{" "}
+          <code>
+            <b>apply()</b>
+          </code>
+          - Invokes a function immediately with a specified <b>this</b> value
+          and arguments provided as an array (or an array-like object).
+        </p>
+        <p>
+          -{" "}
+          <code>
+            <b>bind()</b>
+          </code>
+          - Creates a new function with a specified <b>this</b> value (and
+          optionally, initial arguments) that can be invoked later. It does not
+          execute the original function immediately.
+        </p>
+        <pre>{apb}</pre>
       </>
     ),
   },
@@ -1309,31 +1693,65 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          An IIFE (Immediately Invoked Function Expression) is a JavaScript
-          function that runs as soon as it is defined. It is a design pattern
-          used to create a private scope and avoid polluting the global
-          namespace.
-          <pre>
-            <code>{iife}</code>
-          </pre>
+          - An Immediately Invoked Function Expression, or IIFE, is a JavaScript
+          function that runs as soon as it is defined.
         </p>
+        <p>
+          - It is wrapped in parentheses and followed by{" "}
+          <code>
+            <b>()</b>
+          </code>{" "}
+          to execute immediately.
+        </p>
+        <p>
+          - IIFEs are useful for creating a private scope and avoiding polluting
+          the global namespace.
+        </p>
+        <p>
+          - For example:{" "}
+          <code>
+            <b>{"(function() { console.log('Hello'); })();"}</b>
+          </code>{" "}
+          will run instantly without needing to be called later.
+        </p>
+        <p>- They’re often used in modules or to isolate code in JavaScript.</p>
+        <pre>{iife}</pre>
       </>
     ),
   },
   {
-    q: "What is the difference between function declaration and function expression?",
+    q: "Difference between Function declaration & Function expression?",
     a: (
       <>
         <p>
-          A function declaration defines a named function and is hoisted,
-          meaning it can be called before its definition in the code. A function
-          expression, on the other hand, defines a function as part of a
-          variable assignment and is not hoisted, so it cannot be called before
-          it is defined.
-          <pre>
-            <code>{fdfe}</code>
-          </pre>
+          - In JavaScript, the difference between function declarations and
+          function expressions are mainly about hoisting and syntax.
         </p>
+        <p>
+          - A <b>Function declaration</b> uses the function keyword followed by
+          a name, like{" "}
+          <code>
+            <b>function greet() {}</b>
+          </code>
+          .
+        </p>
+        <p>- It is hoisted, so you can call it before it’s defined.</p>
+        <p>
+          - A <b>Function expression</b> assigns a function to a variable, like{" "}
+          <code>
+            <b>const greet = function() {}</b>
+          </code>{" "}
+          or using an arrow function.
+        </p>
+        <p>
+          - Function expressions are not hoisted, so you can’t call them before
+          the assignment.
+        </p>
+        <p>
+          - Expressions are useful for passing functions as arguments or
+          creating IIFEs.
+        </p>
+        <pre>{fdfe}</pre>
       </>
     ),
   },
@@ -2257,113 +2675,126 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          Let, Const, Template literals, Default parameters, Arrow functions,
-          Destructuring, Spread & Rest operator, Promises. multiline strings,
-          Map, Set, Filter.
+          - ES6, also called ECMAScript 2015, introduced many modern JavaScript
+          features to make coding easier and cleaner. Some key features include:
+          <ol>
+            <li>let and const for block-scoped variables,</li>
+            <li>Arrow functions () =&gt; {} for concise syntax,</li>
+            <li>Template literals using backticks for string interpolation,</li>
+            <li>Default, rest, and spread operators,</li>
+            <li>Destructuring for arrays and objects,</li>
+            <li>Classes and modules for better code organization,</li>
+            <li>Promises for asynchronous programming, </li>
+            <li>Map, Set, and enhanced object literals.</li>
+          </ol>
         </p>
-        <strong>or</strong>
-        <p>
-          Some of the new features introduced in ES6 (ECMAScript 2015) include:
-          <br />
-          1. let and const for block-scoped variables
-          <br /> 2. Arrow functions for concise function syntax
-          <br /> 3. Template literals for easier string interpolation
-          <br /> 4. Default parameters for functions
-          <br /> 5. Destructuring assignment for extracting values from arrays
-          and objects
-          <br /> 6. Spread and rest operators for working with arrays and
-          function arguments
-          <br /> 7. Promises for better handling of asynchronous operations
-          <br /> 8. Classes for object-oriented programming
-          <br /> 9. Modules for better code organization and reuse
-          <br /> 10. Enhanced object literals for more concise object syntax
-        </p>
+        <p>- These features make JavaScript more powerful and maintainable.</p>
       </>
     ),
   },
   {
-    q: "What is Destructuring?",
+    q: "What is Destructuring in JS?",
     a: (
       <>
         <p>
-          It allows unpacking values from arrays or properties from objects into
-          variables.
-          <pre>
-            <code>{destructuring}</code>
-          </pre>
+          - In JavaScript, <b>destructuring</b> is a convenient way to{" "}
+          <b>extract values from arrays or properties from objects</b> into
+          separate variables.
         </p>
-        <strong>or</strong>
         <p>
-          Destructuring is a syntax in JavaScript that allows you to unpack
-          values from arrays or properties from objects into distinct variables.
+          - It helps write cleaner and more readable code. For example, with
+          arrays:
+        </p>
+        <pre>{destructuringArr}</pre>
+        <p>- And with objects:</p>
+        <pre>{destructuringObj}</pre>
+        <p>
+          - It’s widely used in modern JavaScript, especially with function
+          parameters and React props.
         </p>
       </>
     ),
   },
   {
-    q: "What is spread operator?",
+    q: "What is spread operator in JS?",
     a: (
       <>
         <p>
-          Spread operator is used to spread the elements of an array and object
-          into individual elements. It can use for copying arrays/objects,
-          Combining arrays/objects Passing elements as arguments to functions.
-          <pre>
-            <code>{spreadOp}</code>
-          </pre>
+          - In JavaScript, the spread operator (...) allows you to expand an
+          array or object into individual elements.
         </p>
-        <strong>or</strong>
         <p>
-          The spread operator (...) in JavaScript allows you to expand an array
-          or object into individual elements. It is commonly used for copying,
-          merging, or passing elements as function arguments.
+          - It’s commonly used to copy arrays, merge arrays or objects, and pass
+          elements as separate arguments to functions. For example:
+        </p>
+        <pre>{spreadOp}</pre>
+        <p>
+          - It makes code concise and avoids mutating the original array or
+          object.
         </p>
       </>
     ),
   },
   {
-    q: "What is rest operator?",
+    q: "What is rest operator in JS?",
     a: (
       <>
         <p>
-          Rest operator is used to collect multiple elements into single array.
-          It is mainly used in function parameters and array/object
-          destructuring. It can use for grouping remaining arguments, capturing
-          the rest of values.
-          <pre>
-            <code>{restOp}</code>
-          </pre>
+          - In JavaScript, the rest operator (...) allows a function to accept
+          an indefinite number of arguments as an array.
         </p>
-        <strong>or</strong>
         <p>
-          The rest operator (...) in JavaScript allows you to collect multiple
-          elements into a single array. It is commonly used in function
-          parameters and destructuring assignments to capture the remaining
-          values.
+          - It is used in function parameters to gather remaining arguments that
+          are not explicitly named. For example:
+        </p>
+        <pre>
+          <code>{restOp}</code>
+        </pre>
+        <p>
+          - This makes functions flexible, letting them handle any number of
+          inputs easily.
         </p>
       </>
     ),
   },
   {
-    q: "What are string literals?",
+    q: "What are String Literals in JS?",
     a: (
       <>
         <p>
-          Template literals use backticks (`) to allow embedded expressions.{" "}
-          <pre>
-            <code>{stringLiterals}</code>
-          </pre>
+          - In JavaScript, <b>string literals</b> are sequences of characters
+          enclosed in <b>quotes</b>. You can use single quotes{" "}
+          <code>
+            <b>' '</b>
+          </code>
+          , double quotes{" "}
+          <code>
+            <b>" "</b>
+          </code>
+          , or backticks{" "}
+          <code>
+            <b>` `</b>
+          </code>{" "}
+          for <b>template literals</b>.
         </p>
-        <strong>or</strong>
         <p>
-          Template literals are string literals that allow embedded expressions
-          and multi-line strings using backticks (`).
+          - Template literals allow you to include{" "}
+          <b>variables and expressions</b> directly in the string using{" "}
+          <code>
+            <b>${"{}"}</b>
+          </code>{" "}
+          and also support <b>multi-line strings</b>. For example:
+        </p>
+        <pre>{stringLiterals}</pre>
+        <p>
+          - String literals are the simplest way to represent text in
+          JavaScript.
         </p>
       </>
     ),
   },
   {
-    q: "Pollyfills",
+    q: "What are Pollyfills in JS?",
     a: (
       <>
         <p>
@@ -2375,46 +2806,92 @@ export const JavaScriptQuestions = [
           Polyfills are code snippets that add support for modern JavaScript
           features in older browsers that do not natively support them.
         </p>
+        <p>
+          - Polyfills in JavaScript are <b>code snippets or libraries</b> that
+          add support for newer JavaScript features in <b>older browsers</b>{" "}
+          that don’t support them natively.
+        </p>
+        <p>
+          - They basically ‘fill in’ the missing functionality. For example, if
+          a browser doesn’t support{" "}
+          <code>
+            <b>Array.from()</b>
+          </code>{" "}
+          or{" "}
+          <code>
+            <b>Promise</b>
+          </code>
+          , a polyfill can define that behavior manually so your code still
+          works.
+        </p>
+        <p>
+          - Developers often use tools like <b>Babel</b> or libraries like{" "}
+          <b>core-js</b> to automatically include polyfills for backward
+          compatibility.
+        </p>
       </>
     ),
   },
   {
-    q: "First class functions",
+    q: "What is First class functions in JS?",
     a: (
       <>
         <p>
-          Every function in JavaScript are called first class functions. we can
-          pass functions as parameters to another functions. we can assign
-          functions as variables.{" "}
-          <pre>
-            <code>{firstClassFn}</code>
-          </pre>
+          - In JavaScript, functions are <b>first-class citizens</b>, which
+          means they are treated like any other value.
         </p>
-        <strong>or</strong>
         <p>
-          In JavaScript, functions are first-class citizens, meaning they can be
-          treated like any other variable. They can be assigned to variables,
-          passed as arguments to other functions, and returned from functions.
+          - You can <b>assign them to variables, pass them as arguments</b> to
+          other functions, and <b>return them from functions</b>.
+        </p>
+        <p>
+          - This allows powerful programming patterns like callbacks,
+          higher-order functions, and closures. For example:
+        </p>
+        <pre>{firstClassFn}</pre>
+        <p>
+          - This flexibility is what makes JavaScript great for functional
+          programming.
         </p>
       </>
     ),
   },
   {
-    q: "What is dynamic import in JavaScript?",
+    q: "What is Dynamic import in JavaScript?",
     a: (
       <>
-        <p>
-          Dynamic import allows you to load JavaScript modules on demand using
-          the import() function. It returns a promise that resolves to the
-          module, enabling code splitting and lazy loading.
-        </p>
-        <strong>or</strong>
         <p>
           Dynamic import in JavaScript is a way to load modules asynchronously
-          using the import() function. This allows for code splitting and lazy
-          loading of modules, improving performance by only loading code when it
-          is needed.
+          using the{" "}
+          <code>
+            <b>import()</b>
+          </code>{" "}
+          function. This allows for code splitting and lazy loading of modules,
+          improving performance by only loading code when it is needed.
         </p>
+        <strong>or</strong>
+        <p>
+          - Dynamic import in JavaScript allows you to{" "}
+          <b>load modules on demand</b> instead of importing them at the top of
+          the file.
+        </p>
+        <p>
+          - It uses the{" "}
+          <code>
+            <b>import()</b>
+          </code>
+          function, which returns a <b>promise</b>, so the module is loaded{" "}
+          <b>asynchronously</b>.
+        </p>
+        <p>
+          - This helps improve performance by reducing the initial bundle size —
+          only loading code when it is actually needed. For example:
+        </p>
+        <p>
+          - This is especially useful in large apps for code-splitting and lazy
+          loading.
+        </p>
+        <pre>{dynamic}</pre>
       </>
     ),
   },
@@ -2423,11 +2900,6 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          Yes, JavaScript is faster than server-side rendering because java
-          script does not require any web servers help to computation.
-        </p>
-        <strong>or</strong>
-        <p>
           JavaScript can be faster than server-side rendering in certain
           scenarios, especially for highly interactive applications where
           client-side rendering can reduce server load and improve
@@ -2435,53 +2907,74 @@ export const JavaScriptQuestions = [
           factors such as application complexity, network latency, and user
           experience requirements.
         </p>
-      </>
-    ),
-  },
-  {
-    q: "Server side rendering vs client side rendering",
-    a: (
-      <>
-        <p>
-          Server-side rendering (SSR) generates the full HTML for a page on the
-          server and sends it to the client. This can improve initial load time
-          and SEO since the content is available immediately. However, it can
-          increase server load and may result in slower interactions after the
-          initial load.
-        </p>
-        <p>
-          Client-side rendering (CSR) generates HTML on the client using
-          JavaScript. This can lead to faster interactions after the initial
-          load, as only data needs to be fetched from the server. However, it
-          may result in slower initial load times and can be less SEO-friendly
-          since content is not immediately available.
-        </p>
-      </>
-    ),
-  },
-  {
-    q: "What is hydration in client-side rendering?",
-    a: (
-      <>
-        <p>
-          Hydration is the process of attaching event listeners and making a
-          server-rendered HTML page interactive on the client side using
-          JavaScript. It allows the client-side JavaScript to take over and
-          manage the existing HTML structure, enabling dynamic behavior and
-          interactivity.
-        </p>
         <strong>or</strong>
         <p>
-          Hydration in client-side rendering refers to the process of converting
-          a server-rendered HTML page into a fully interactive web application
-          by attaching event listeners and initializing JavaScript components on
-          the client side.
+          - <b>JavaScript rendering on the client side is not always faster</b>{" "}
+          than server-side rendering.
+        </p>
+        <p>
+          - With <b>client-side rendering (CSR)</b>, the browser has to{" "}
+          <b>download, parse, and execute JavaScript</b> before showing content,
+          which can slow down the initial load.
+        </p>
+        <p>
+          - on the other hand, <b>Server-side rendering (SSR)</b>, sends fully
+          rendered HTML, so the first page loads faster and is better for SEO.
+        </p>
+        <p>
+          - However, once loaded, CSR can make{" "}
+          <b>page transitions and interactions faster</b>, since everything
+          happens on the client without full reloads.
         </p>
       </>
     ),
   },
   {
-    q: "Prototypes and inheritance in JavaScript",
+    q: "Server side rendering vs client side rendering in JS?",
+    a: (
+      <>
+        <p>
+          - In JavaScript, <b>Server-Side Rendering</b> (SSR) means the HTML is
+          <b>generated on the server</b> and sent to the browser fully formed,
+          so the user sees content faster and SEO improves.
+        </p>
+        <p>
+          - <b>Client-Side Rendering</b> (CSR) means the browser first loads a
+          blank HTML page and then <b>JavaScript builds the UI</b> dynamically
+          on the client side, which can delay the first paint but makes
+          navigation faster once loaded.
+        </p>
+        <p>
+          - Frameworks like Next.js use SSR, while React or Angular apps often
+          use CSR.
+        </p>
+      </>
+    ),
+  },
+  {
+    q: "What is Hydration in client-side rendering in JS?",
+    a: (
+      <>
+        <p>
+          - Hydration in JavaScript is the process where the{" "}
+          <b>client-side JavaScript takes over the static HTML</b> that was
+          rendered by the server and <b>makes it interactive</b>.
+        </p>
+        <p>- This usually happens in frameworks like React or Next.js.</p>
+        <p>
+          - The server sends pre-rendered HTML for faster page load and SEO, and
+          then the client ‘hydrates’ it by attaching event listeners and
+          rebuilding the virtual DOM.
+        </p>
+        <p>
+          - It is basically how a static page becomes dynamic after the
+          JavaScript bundle runs in the browser.
+        </p>
+      </>
+    ),
+  },
+  {
+    q: "What are Prototypes and Inheritance in JavaScript?",
     a: (
       <>
         <p>
@@ -2493,93 +2986,144 @@ export const JavaScriptQuestions = [
         </p>
         <strong>or</strong>
         <p>
-          Prototypes in JavaScript are objects that provide a mechanism for
-          inheritance. Every object has a prototype, and when you try to access
-          a property or method on an object, JavaScript first checks the object
-          itself. If it doesn't find it there, it looks up the prototype chain
-          until it finds the property/method or reaches the end of the chain.
+          - In JavaScript, <b>prototypes</b> are the mechanism by which objects
+          can <b>inherit properties and methods</b> from other objects.
+        </p>
+        <p>
+          - Every JavaScript object has an internal link to another object
+          called its <b>prototype</b>, and properties defined on the prototype
+          are shared by all instances.
+        </p>
+        <p>
+          - Inheritance in JavaScript is prototype-based, meaning objects can
+          inherit directly from other objects.
+        </p>
+        <p>
+          - For example,{" "}
+          <code>
+            <b>
+              Person.prototype.sayHi = function() {"{ console.log('Hi'); }"}
+            </b>
+          </code>{" "}
+          lets all objects created from <b>Person</b> access <b>sayHi</b>{" "}
+          through the prototype chain.
         </p>
       </>
     ),
   },
   {
-    q: "What are generator functions?",
+    q: "What are Generator functions in JS?",
     a: (
       <>
         <p>
-          It allows you to control the execution of a function. Unlike regular
-          functions, generators can be paused at any point during their
-          execution and later resumed from where they left off.{" "}
-          <pre>
-            <code>{generators}</code>
-          </pre>
+          - In JavaScript, Generator functions are special functions that can
+          <b> pause and resume their execution</b> using the{" "}
+          <code>
+            <b>function*</b>
+          </code>{" "}
+          syntax and the{" "}
+          <code>
+            <b>yield</b>
+          </code>{" "}
+          keyword.
         </p>
-        <strong>or</strong>
         <p>
-          Generator functions are special types of functions in JavaScript that
-          can be paused and resumed during their execution. They use the
-          function* syntax and the yield keyword to produce a sequence of values
-          over time, allowing for more controlled and efficient iteration.
+          - Instead of returning a single value, they return an{" "}
+          <b>iterator object</b>, which lets you get values one at a time using
+          <code>
+            <b>next().</b>
+          </code>
+        </p>
+        <p>
+          - This is useful for handling sequences, lazy evaluation, or
+          asynchronous flows. For example:
+        </p>
+        <pre>{generators}</pre>
+        <p>
+          - Each{" "}
+          <code>
+            <b>next()</b>
+          </code>{" "}
+          call resumes execution until the next{" "}
+          <code>
+            <b>yield.</b>
+          </code>
         </p>
       </>
     ),
   },
   {
-    q: "What is memoization with example?",
+    q: "What is Memoization in JS with example?",
     a: (
       <>
         <p>
-          In JavaScript, memorization is an optimization technique used to speed
-          up the function execution by catching the results of expensive
-          function calls. <br />
-          Some functions may be called repeatedly with same arguments.
-          Memoization prevents repeated work by storing results.{" "}
+          - <b>Memoization</b> in JavaScript is a technique to improve
+          performance by caching the results of function calls so that if the
+          same inputs occur again, the function returns the cached result
+          instead of recalculating it. It is often used in expensive
+          computations like recursion. For example:
         </p>
-        <strong>or</strong>
+        <pre>{memo}</pre>
+        <p>- This avoids repeated work and makes the function faster.</p>
+      </>
+    ),
+  },
+  {
+    q: "What is Tail Call Optimization (TOC) in JavaScript?",
+    a: (
+      <>
         <p>
-          Memoization is an optimization technique in JavaScript that involves
-          caching the results of expensive function calls and returning the
-          cached result when the same inputs occur again. This can significantly
-          improve performance for functions that are called frequently with the
-          same arguments.
+          - <b>Tail call optimization</b> in JavaScript is a feature where the
+          <b>JavaScript engine optimizes recursive function calls</b> that occur
+          as the
+          <b>last action</b> in a function — meaning the function returns the
+          result of another function call directly.
+        </p>
+        <p>
+          - This optimization helps{" "}
+          <b>save memory and prevent stack overflow</b> by reusing the current
+          function’s stack frame instead of creating a new one.
+        </p>
+        <p>
+          - For example,{" "}
+          <code>
+            <b>return factorial(n - 1, n * acc);</b>
+          </code>{" "}
+          in a recursive function is a tail call because it’s the last statement
+          returned.
         </p>
       </>
     ),
   },
   {
-    q: "What is tail call optimization in JavaScript?",
+    q: "Difference between Parameters and Arguments in JS?",
     a: (
       <>
         <p>
-          Tail call optimization (TCO) is a technique used by some JavaScript
-          engines to improve the performance of recursive functions. When a
-          function calls itself as its last action (a tail call), TCO allows the
-          engine to reuse the current function's stack frame for the next call,
-          preventing stack overflow and reducing memory usage.
-        </p>
-      </>
-    ),
-  },
-  {
-    q: "Difference between parameter and arguments",
-    a: (
-      <>
-        <p>
-          <b>Parameters</b> are variables defined in the function. Inside
-          function declaration, they act as a placeholder for the values the
-          function will receive when called. <br />
-          <b>Arguments</b> are actual values passed to a function when it is
-          called. In the function call, they supply the data that will be used
-          by the function.
-        </p>
-        <strong>or</strong>
-        <p>
-          <b>Parameters</b> are the named variables defined in a function's
-          declaration, acting as placeholders for the values that will be passed
-          to the function. <br />
-          <b>Arguments</b> are the actual values or expressions provided to a
-          function when it is invoked, corresponding to the parameters defined
-          in the function.
+          In JavaScript,
+          <p>
+            - <b>Parameters</b> are the variables listed in the function
+            definition that act as placeholders for values.
+          </p>
+          <p>
+            - <b>Arguments</b> are the actual values passed to the function when
+            it is called.
+          </p>
+          <p>
+            - For example, in{" "}
+            <code>
+              <b>function add(a, b) {"{ return a + b; }"}</b>
+            </code>
+            , <b>a</b> and <b>b</b> are <b>parameters</b>, while calling{" "}
+            <code>
+              <b>add(2, 3)</b>
+            </code>{" "}
+            passes <b>2</b> and <b>3</b> as <b>arguments</b>.
+          </p>
+          <p>
+            - <b>Parameters</b> define what the function expects, and{" "}
+            <b>arguments</b> are what it actually receives during execution.
+          </p>
         </p>
       </>
     ),
