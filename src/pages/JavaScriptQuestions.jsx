@@ -273,332 +273,383 @@ const fdfe = `
 `;
 
 const arr = `
-    // Using array literal (most common)
-      const fruits = ["apple", "banana", "cherry"];
+  // Using array literal (most common)
+    const fruits = ["apple", "banana", "cherry"];
 
-    // Using Array constructor
-      const numbers = new Array(1, 2, 3, 4);
+  // Using Array constructor
+    const numbers = new Array(1, 2, 3, 4);
 
-    // Empty array with length 3
-      const emptyArr = new Array(3);
+  // Empty array with length 3
+    const emptyArr = new Array(3);
 
 `;
 
 const obj = `
-    const person = {
-      name: "Alice",
-      age: 30,
-      isStudent: false,
-      greet: function() {
-        console.log("Hello, " + this.name);
-      }
-    };
+  const person = {
+    name: "Alice",
+    age: 30,
+    isStudent: false,
+    greet: function() {
+      console.log("Hello, " + this.name);
+    }
+  };
 
 `;
 
 const arrBuffer = `
-    const buffer = new ArrayBuffer(16); // Creates a buffer of 16 bytes
-    console.log(buffer.byteLength); // Output: 16
+  const buffer = new ArrayBuffer(16); // Creates a buffer of 16 bytes
+  console.log(buffer.byteLength); // Output: 16
 
 `;
 
 const map = `
-    const numbers = [1, 2, 3]; 
-    const doubled = numbers.map(num => num * 2); 
-    console.log(doubled); // [2, 4, 6]
+  const numbers = [1, 2, 3]; 
+  const doubled = numbers.map(num => num * 2); 
+  console.log(doubled); // [2, 4, 6]
 
 `;
 
 const filter = `
-    const numbers = [1, 2, 3, 4]; 
-    const evens = numbers.filter(num => num % 2 === 0); 
-    console.log(evens); // [2, 4]
+  const numbers = [1, 2, 3, 4]; 
+  const evens = numbers.filter(num => num % 2 === 0); 
+  console.log(evens); // [2, 4]
 
 `;
 
 const find = `
-    const users = [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 3, name: 'Charlie' }];
+  const users = [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 3, name: 'Charlie' }];
 
-    const user = users.find(u => u.id === 2);
-    console.log(user); // Output: { id: 2, name: 'Bob' }
-
+  const user = users.find(u => u.id === 2);
+  console.log(user); // Output: { id: 2, name: 'Bob' }
 `;
 
 const forEach = `
-    const numbers = [1, 2, 3]; 
-    numbers.forEach(num => console.log(num)); // Output: // 1
+  const numbers = [1, 2, 3]; 
+  numbers.forEach(num => console.log(num)); // Output: // 1
 
 `;
 
-const reducer = `
-    // Initial state
-      const initialState = { count: 0 };
+const reduce = `
+// Initial state
+  const initialState = { count: 0 };
 
-    // Reducer function
-      function counterReducer(state = initialState, action) {
-        switch(action.type) {
-          case 'INCREMENT':
-            return { count: state.count + 1 };
-          case 'DECREMENT':
-            return { count: state.count - 1 };
-          default:
-            return state; // Return current state if no matching action
-        }
-      }
+// Reducer function
+  function counterReducer(state = initialState, action) {
+    switch(action.type) {
+      case 'INCREMENT':
+        return { count: state.count + 1 };
+      case 'DECREMENT':
+        return { count: state.count - 1 };
+      default:
+        return state; // Return current state if no matching action
+    }
+  }
+
+`;
+
+const useReduce = `
+  const fruits = ['apple', 'banana', 'apple'];
+  const count = fruits.reduce((acc, fruit) => {
+    acc[fruit] = (acc[fruit] || 0) + 1;
+    return acc;
+  }, {});
+  console.log(count); // { apple: 2, banana: 1 }
 
 `;
 
 const sliceSplice = `
-    🔹 slice() Example:
-        const arr = ['a', 'b', 'c', 'd', 'e'];
+🔹 slice() Example:
+    const arr = ['a', 'b', 'c', 'd', 'e'];
 
-        const sliced = arr.slice(1, 4);
-        console.log(sliced); // ['b', 'c', 'd']
-        console.log(arr);    // ['a', 'b', 'c', 'd', 'e'] (unchanged)
+    const sliced = arr.slice(1, 4);
+    console.log(sliced); // ['b', 'c', 'd']
+    console.log(arr);    // ['a', 'b', 'c', 'd', 'e'] (unchanged)
 
-    🔹 splice() Example:
-        const arr = ['a', 'b', 'c', 'd', 'e'];
+🔹 splice() Example:
+    const arr = ['a', 'b', 'c', 'd', 'e'];
 
-        // Remove 2 elements starting from index 1 and insert 'x' and 'y'
-        const removed = arr.splice(1, 2, 'x', 'y');
+    // Remove 2 elements starting from index 1 and insert 'x' and 'y'
+    const removed = arr.splice(1, 2, 'x', 'y');
 
-        console.log(removed); // ['b', 'c'] (elements removed)
-        console.log(arr);     // ['a', 'x', 'y', 'd', 'e'] (original array modified)
+    console.log(removed); // ['b', 'c'] (elements removed)
+    console.log(arr);     // ['a', 'x', 'y', 'd', 'e'] (original array modified)
 
 `;
 
 const createObjects = `
-    1. Object Literal (most common):                              5. Using ES6 class Syntax:
-        const obj = {                                                 class Person {
-          name: "Alice",                                                constructor(name, age) {
-          age: 25                                                          this.name = name;
-        };                                                                 this.age = age;
-                                                                        }
-    2. Using new Object() Constructor:                                }
-        const obj = new Object();                                     
-        obj.name = "Bob";                                             const person2 = new Person("Diana", 28);
-        obj.age = 30;
+  1. Object Literal (most common):
+    const obj = {
+      name: "Alice",
+      age: 25
+    };
 
-    3. Using Object.create() (prototype-based creation):          6. Using Factory Functions (functions that return objects):
-        const proto = {                                               function createPerson(name, age) {
-          greet() {                                                     return {
-            console.log("Hello!");                                        name,
-          }                                                               age,
-        };                                                                greet() {
-                                                                              console.log(\`Hi, I am \${name}\`);
-        const obj = Object.create(proto);                                 }
-        obj.name = "Eve";                                               };
-        obj.greet(); // Output: Hello!                                }
+  2. Using new Object() Constructor:
+    const obj = new Object();
+    obj.name = "Bob";
+    obj.age = 30;
 
-    4. Using a Constructor Function:                                  const person3 = createPerson("Frank", 40);
-        function Person(name, age) {                                  person3.greet(); // Hi, I am Frank
-          this.name = name;
-          this.age = age;
+  3. Using Object.create() (prototype-based creation):          
+    const proto = {                                               
+      greet() {                                                     
+        console.log("Hello!");
+      }
+    };                                                                
+                                                                          
+    const obj = Object.create(proto);
+    obj.name = "Eve"; 
+    obj.greet(); // Output: Hello!
+
+  4. Using a Constructor Function:                                  
+    function Person(name, age) {                                  
+      this.name = name;
+      this.age = age;
+    }
+
+    const person1 = new Person("Charlie", 35);
+
+  5. Using ES6 class Syntax:
+    class Person {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+    }
+
+    const person2 = new Person("Diana", 28);
+
+  6. Using Factory Functions (functions that return objects):
+    function createPerson(name, age) {
+      return {
+        name,
+        age,
+        greet() {
+          console.log(\`Hi, I am \${name}\`);
         }
+      };
+    }
 
-        const person1 = new Person("Charlie", 35);
+    const person3 = createPerson("Frank", 40);
+    person3.greet(); // Hi, I am Frank
 
 `;
 
 const shallowDeep = `
-    1. Shallow clone:
-        const original = { name: "Alice", address: { city: "NY" } };
-        const shallowClone = { ...original };
+  1. Shallow clone:
+      const original = { name: "Alice", address: { city: "NY" } };
+      const shallowClone = { ...original };
 
-        shallowClone.name = "Bob";
-        shallowClone.address.city = "LA";
+      shallowClone.name = "Bob";
+      shallowClone.address.city = "LA";
 
-        console.log(original.name);         // "Alice" (not affected)
-        console.log(original.address.city); // "LA" (affected — shared reference!)
+      console.log(original.name);         // "Alice" (not affected)
+      console.log(original.address.city); // "LA" (affected — shared reference!)
 
-    2. Deep clone:
-        const original = { name: "Alice", address: { city: "NY" } };
-        const deepClone = JSON.parse(JSON.stringify(original));
+  2. Deep clone:
+      const original = { name: "Alice", address: { city: "NY" } };
+      const deepClone = JSON.parse(JSON.stringify(original));
 
-        deepClone.address.city = "LA";
+      deepClone.address.city = "LA";
 
-        console.log(original.address.city); // "NY" (not affected)
+      console.log(original.address.city); // "NY" (not affected)
 
 `;
 
 const eventHandling = `
-    element.addEventListener(eventType, callbackFunction);
+  element.addEventListener(eventType, callbackFunction);
 
-    eventType: like "click", "submit", "keydown", etc.
-    callbackFunction: function to run when the event occurs.
+  eventType: like "click", "submit", "keydown", etc.
+  callbackFunction: function to run when the event occurs.
 
 `;
 
 const eventDelegation = `
-    <ul id="list">
-      <li>Item A</li>
-      <li>Item B</li>
-      <li>Item C</li>
-    </ul>
+  <ul id="list">
+    <li>Item A</li>
+    <li>Item B</li>
+    <li>Item C</li>
+  </ul>
 
-    <script>
-      const list = document.getElementById("list");
+  <script>
+    const list = document.getElementById("list");
 
-      list.addEventListener("click", function(event) {
-        if (event.target.tagName === "LI") {          // Check if a <li> was clicked
-          alert("You clicked: " + event.target.textContent);
-        }
-      });
-    </script>
+    list.addEventListener("click", function(event) {
+      if (event.target.tagName === "LI") {          // Check if a <li> was clicked
+        alert("You clicked: " + event.target.textContent);
+      }
+    });
+  </script>
 
 `;
 
 const eventBubbling = `
-    <button id="child">Click Me</button>
+  <button id="child">Click Me</button>
 
-    <script>
-      document.getElementById("child").addEventListener("click", function () {
-        console.log("Child clicked");
-      });
+  <script>
+    document.getElementById("child").addEventListener("click", function () {
+      console.log("Child clicked");
+    });
 
-      document.getElementById("parent").addEventListener("click", function () {
-        console.log("Parent clicked");
-      });
+    document.getElementById("parent").addEventListener("click", function () {
+      console.log("Parent clicked");
+    });
 
-      document.body.addEventListener("click", function () {
-        console.log("Body clicked");
-      });
-    </script>
+    document.body.addEventListener("click", function () {
+      console.log("Body clicked");
+    });
+  </script>
 
 `;
 
 const eventCapturing = `
-    div id="parent" style="padding: 30px; background: lightblue;">
-      Parent
-      <button id="child">Click Me</button>
-    </div>
+  div id="parent" style="padding: 30px; background: lightblue;">
+    Parent
+    <button id="child">Click Me</button>
+  </div>
 
-    <script>
-      const parent = document.getElementById("parent");
-      const child = document.getElementById("child");
+  <script>
+    const parent = document.getElementById("parent");
+    const child = document.getElementById("child");
 
-      // Capturing phase
-      parent.addEventListener("click", () => {
-        console.log("Parent capture");
-      }, true); // 👈 true enables capture phase
+    // Capturing phase
+    parent.addEventListener("click", () => {
+      console.log("Parent capture");
+    }, true); // 👈 true enables capture phase
 
-      // Bubbling phase
-      parent.addEventListener("click", () => {
-        console.log("Parent bubble");
-      });
+    // Bubbling phase
+    parent.addEventListener("click", () => {
+      console.log("Parent bubble");
+    });
 
-      child.addEventListener("click", () => {
-        console.log("Child clicked");
-      });
-    </script>
+    child.addEventListener("click", () => {
+      console.log("Child clicked");
+    });
+  </script>
 
 `;
 
 const errorHandling = `
-    try {
-      console.log("Try block");
-      throw new Error("Oops!");
-    } catch (e) {
-      console.log("Caught:", e.message);
-    } finally {
-      console.log("Finally block always runs");
-    }
+  try {
+    console.log("Try block");
+    throw new Error("Oops!");
+  } catch (e) {
+    console.log("Caught:", e.message);
+  } finally {
+    console.log("Finally block always runs");
+  }
 
 `;
 
 const errorTypes = `
-    ✅ 1. ReferenceError
-            function printName() {
-              console.log(userName); // userName is not defined anywhere
-            }
+✅ 1. ReferenceError
+        function printName() {
+          console.log(userName); // userName is not defined anywhere
+        }
 
-            printName(); // 🔴 ReferenceError: userName is not defined
+        printName(); // 🔴 ReferenceError: userName is not defined
 
-    ✅ 2. TypeError
-            let num = 5;
-            num(); // 🔴 TypeError: num is not a function
+✅ 2. TypeError
+        let num = 5;
+        num(); // 🔴 TypeError: num is not a function
 
-    ✅ 3. SyntaxError
-            function greet() {
-              console.log("Hello"  // 🔴 SyntaxError: missing ) after argument list
-            }
+✅ 3. SyntaxError
+        function greet() {
+          console.log("Hello"  // 🔴 SyntaxError: missing ) after argument list
+        }
             
 `;
 
 const tryCatchFinally = `
-    function test() {
-      try {
-        console.log("In try block");
-        let result = riskyOperation(); // Not defined – will throw
-      } catch (error) {
-        console.log("Caught an error:", error.message);
-      } finally {
-        console.log("Finally block always runs");
-      }
+  function test() {
+    try {
+      console.log("In try block");
+      let result = riskyOperation(); // Not defined – will throw
+    } catch (error) {
+      console.log("Caught an error:", error.message);
+    } finally {
+      console.log("Finally block always runs");
     }
+  }
 
-    test();
+  test();
 
-    Output:
-    In try block
-    Caught an error: riskyOperation is not defined
-    Finally block always runs
+  Output:
+  In try block
+  Caught an error: riskyOperation is not defined
+  Finally block always runs
 
 `;
 
 const promise = `
-    ✅ Example 1: Simple Promise:
-        let promise = new Promise((resolve, reject) => {
-          let success = true;
-          setTimeout(() => {
-            if (success) {
-              resolve("Data fetched successfully");
-            } else {
-              reject("Failed to fetch data");
-            }
-          }, 1000);
-        });
-
-        promise
-          .then(result => console.log("✅", result))
-          .catch(error => console.error("❌", error))
-          .finally(() => console.log("🔁 Operation complete"));
-
-    ✅ Example 2: Function That Returns a Promise:
-        function fetchData() {
-          return new Promise((resolve, reject) => {
-            setTimeout(() => {
-              resolve("Here is your data");
-            }, 500);
-          });
+✅ Example 1: Simple Promise:
+    let promise = new Promise((resolve, reject) => {
+      let success = true;
+      setTimeout(() => {
+        if (success) {
+          resolve("Data fetched successfully");
+        } else {
+          reject("Failed to fetch data");
         }
+      }, 1000);
+    });
 
-        fetchData()
-          .then(data => console.log("Received:", data))
-          .catch(err => console.error("Error:", err));
+    promise
+      .then(result => console.log("✅", result))
+      .catch(error => console.error("❌", error))
+      .finally(() => console.log("🔁 Operation complete"));
+
+✅ Example 2: Function That Returns a Promise:
+    function fetchData() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("Here is your data");
+        }, 500);
+      });
+    }
+
+    fetchData()
+      .then(data => console.log("Received:", data))
+      .catch(err => console.error("Error:", err));
 
 `;
 
 const promiseChaining = `
-  ✅ Simple Example: Chaining with .then()                                               ✅ Example with Async Function in Chain
-      new Promise((resolve, reject) => {                                                      function doubleAsync(n) {
-        setTimeout(() => resolve(1), 1000); // Step 1: Resolve with 1 after 1s                  return new Promise(resolve => {
-      })                                                                                          setTimeout(() => resolve(n * 2), 500);
-        .then(result => {                                                                       });
-          console.log("Step 1:", result); // 1                                                }
-          return result * 2;
-        })                                                                                    doubleAsync(2)
-        .then(result => {                                                                       .then(result => {
-          console.log("Step 2:", result); // 2                                                    console.log("First:", result); // 4
-          return result * 3;                                                                      return doubleAsync(result);    // 8
-        })                                                                                      })
-        .then(result => {                                                                       .then(result => {
-          console.log("Step 3:", result); // 6                                                    console.log("Second:", result); // 8
-        });                                                                                       return doubleAsync(result);     // 16
-                                                                                                })
-                                                                                                .then(result => {
-                                                                                                  console.log("Third:", result); // 16
-                                                                                                });
+✅ Simple Example: Chaining with .then()                                               
+    new Promise((resolve, reject) => {                                                      
+      setTimeout(() => resolve(1), 1000); // Step 1: Resolve with 1 after 1s                  
+    })                                                                                          
+      .then(result => {                                                                       
+        console.log("Step 1:", result); // 1                                               
+        return result * 2;
+      })                                                                                    
+      .then(result => {                                                                       
+        console.log("Step 2:", result); // 2                                                    
+        return result * 3;                                                                      
+      })                                                                                      
+      .then(result => {                                                                       
+        console.log("Step 3:", result); // 6                                                    
+      });                                                                                       
+                                                                                              
+                                                                                              
+✅ Example with Async Function in Chain:
+    function doubleAsync(n) {
+      return new Promise(resolve => {
+        setTimeout(() => resolve(n * 2), 500);
+      });
+    }
+
+    doubleAsync(2)
+      .then(result => {
+        console.log("First:", result); // 4
+        return doubleAsync(result);    // 8
+      })
+      .then(result => {
+        console.log("Second:", result); // 8
+        return doubleAsync(result);     // 16
+      })
+      .then(result => {
+        console.log("Third:", result); // 16
+      });
+
 `;
 
 const asyncAwait = `
@@ -625,119 +676,119 @@ const asyncAwait = `
 `;
 
 const promiseMethods = `
-    🔗 1. Promise.all([]):
-          📌 Syntax:
-            Promise.all([promise1, promise2, promise3])
-              .then(results => console.log("All resolved:", results))
-              .catch(error => console.error("One failed:", error));
+🔗 1. Promise.all([]):
+      📌 Syntax:
+        Promise.all([promise1, promise2, promise3])
+          .then(results => console.log("All resolved:", results))
+          .catch(error => console.error("One failed:", error));
 
-          ✅ Example:
-            const p1 = Promise.resolve(1);
-            const p2 = Promise.resolve(2);
-            const p3 = Promise.reject("❌ Error");
+      ✅ Example:
+        const p1 = Promise.resolve(1);
+        const p2 = Promise.resolve(2);
+        const p3 = Promise.reject("❌ Error");
 
-            Promise.all([p1, p2, p3])
-              .then(res => console.log(res))
-              .catch(err => console.error("Failed:", err)); // Immediately fails on p3
+        Promise.all([p1, p2, p3])
+          .then(res => console.log(res))
+          .catch(err => console.error("Failed:", err)); // Immediately fails on p3
 
-    🟡 2. Promise.allSettled([]):
-          📌 Syntax:
-            Promise.allSettled([promise1, promise2])
-              .then(results => console.log(results));
+🟡 2. Promise.allSettled([]):
+      📌 Syntax:
+        Promise.allSettled([promise1, promise2])
+          .then(results => console.log(results));
 
-          ✅ Example:
-            const p1 = Promise.resolve("✅ OK");
-            const p2 = Promise.reject("❌ Failed");
+      ✅ Example:
+        const p1 = Promise.resolve("✅ OK");
+        const p2 = Promise.reject("❌ Failed");
 
-            Promise.allSettled([p1, p2]).then(results => {
-              results.forEach((result, index) => {
-                console.log(\`Promise \${index + 1}:\`, result.status, result.value || result.reason);
-              });
-            });
+        Promise.allSettled([p1, p2]).then(results => {
+          results.forEach((result, index) => {
+            console.log(\`Promise \${index + 1}:\`, result.status, result.value || result.reason);
+          });
+        });
 
-    🏁 3. Promise.race([]):
-          📌 Syntax:
-            Promise.race([promise1, promise2])
-              .then(result => console.log("First to settle:", result))
-              .catch(error => console.error("First to reject:", error));
+🏁 3. Promise.race([]):
+      📌 Syntax:
+        Promise.race([promise1, promise2])
+          .then(result => console.log("First to settle:", result))
+          .catch(error => console.error("First to reject:", error));
 
-          ✅ Example:
-            const p1 = new Promise(resolve => setTimeout(() => resolve("🏁 p1"), 100));
-            const p2 = new Promise(resolve => setTimeout(() => resolve("🏁 p2"), 200));
+      ✅ Example:
+        const p1 = new Promise(resolve => setTimeout(() => resolve("🏁 p1"), 100));
+        const p2 = new Promise(resolve => setTimeout(() => resolve("🏁 p2"), 200));
 
-            Promise.race([p1, p2]).then(result => {
-              console.log("Winner:", result); // "🏁 p1"
-            });
+        Promise.race([p1, p2]).then(result => {
+          console.log("Winner:", result); // "🏁 p1"
+        });
 
-    🟢 4. Promise.any([]) (ES2021+):
-          📌 Syntax:
-            Promise.any([promise1, promise2])
-              .then(result => console.log("First success:", result))
-              .catch(error => console.error("All failed:", error));
+🟢 4. Promise.any([]) (ES2021+):
+      📌 Syntax:
+        Promise.any([promise1, promise2])
+          .then(result => console.log("First success:", result))
+          .catch(error => console.error("All failed:", error));
 
-          ✅ Example:
-            const p1 = Promise.reject("❌ p1");
-            const p2 = Promise.resolve("✅ p2");
-            const p3 = Promise.resolve("✅ p3");
+      ✅ Example:
+        const p1 = Promise.reject("❌ p1");
+        const p2 = Promise.resolve("✅ p2");
+        const p3 = Promise.resolve("✅ p3");
 
-            Promise.any([p1, p2, p3])
-              .then(result => console.log("Success:", result)) // ✅ p2
-              .catch(err => console.error("All failed:", err));
+        Promise.any([p1, p2, p3])
+          .then(result => console.log("Success:", result)) // ✅ p2
+          .catch(err => console.error("All failed:", err));
 
 `;
 
 const debouncing = `
-      HTML:
-        <input type="text" id="search" placeholder="Type to search..." />
+  HTML:
+    <input type="text" id="search" placeholder="Type to search..." />
 
-      JS:
-        function debounce(fn, delay) {
-          let timer;
-          return function (...args) {
-            clearTimeout(timer); // Reset the timer
-            timer = setTimeout(() => {
-              fn.apply(this, args); // Call the original function
-            }, delay);
-          };
-        }
+  JS:
+    function debounce(fn, delay) {
+      let timer;
+      return function (...args) {
+        clearTimeout(timer); // Reset the timer
+        timer = setTimeout(() => {
+          fn.apply(this, args); // Call the original function
+        }, delay);
+      };
+    }
 
-        function handleSearch(event) {
-          console.log("Searching for:", event.target.value);
-        }
+    function handleSearch(event) {
+      console.log("Searching for:", event.target.value);
+    }
 
-        const debouncedSearch = debounce(handleSearch, 500);
+    const debouncedSearch = debounce(handleSearch, 500);
 
-        document.getElementById("search").addEventListener("input", debouncedSearch);
+    document.getElementById("search").addEventListener("input", debouncedSearch);
 
 `;
 
 const throttling = `
-      HTML:
-        <button id="button">Click me!</button>
+  HTML:
+    <button id="button">Click me!</button>
 
-      JS:
-        // Throttle function: allows execution once every 'delay' ms
-        function throttle(fn, delay) {
-          let lastCall = 0;
-          return function (...args) {
-            const now = Date.now();
-            if (now - lastCall >= delay) {
-              lastCall = now;
-              fn.apply(this, args);
-            }
-          };
+  JS:
+    // Throttle function: allows execution once every 'delay' ms
+    function throttle(fn, delay) {
+      let lastCall = 0;
+      return function (...args) {
+        const now = Date.now();
+        if (now - lastCall >= delay) {
+          lastCall = now;
+          fn.apply(this, args);
         }
+      };
+    }
 
-        // The function to be throttled
-        function handleClick() {
-          console.log("🟢 Button clicked at", new Date().toLocaleTimeString());
-        }
+    // The function to be throttled
+    function handleClick() {
+      console.log("🟢 Button clicked at", new Date().toLocaleTimeString());
+    }
 
-        // Apply throttling (1 click per 2 seconds)
-        const throttledClick = throttle(handleClick, 2000);
+    // Apply throttling (1 click per 2 seconds)
+    const throttledClick = throttle(handleClick, 2000);
 
-        // Attach to button
-        document.getElementById("throttleBtn").addEventListener("click", throttledClick);
+    // Attach to button
+    document.getElementById("throttleBtn").addEventListener("click", throttledClick);
 
 `;
 
@@ -845,6 +896,25 @@ const generators = `
     console.log(gen.next()); // { value: 20, done: false }
     console.log(gen.next()); // { value: 30, done: false }
     console.log(gen.next()); // { value: undefined, done: true }
+
+`;
+
+const iterator = `
+  function* numbers() {
+    yield 1;
+    yield 2;
+    yield 3;
+  }
+  const numIterator = numbers();
+  console.log(numIterator.next()); // { value: 1, done: false }
+
+`;
+
+const interceptors = `
+  axios.interceptors.request.use(config => {
+    config.headers['Authorization'] = 'Bearer token';
+    return config;
+  });
 
 `;
 
@@ -1760,19 +1830,29 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          Arrays are ordered collection of values. used for storing and
-          manipulating the list of items.
-          <pre>
-            <code>{arr}</code>
-          </pre>
+          - An array in JavaScript is a special type of object used to store
+          multiple values in a single variable.
         </p>
-        <strong>or</strong>
         <p>
-          An array is a special variable in JavaScript that can hold more than
-          one value at a time. It is a list-like object that allows you to store
-          multiple values in a single variable, and you can access each value
-          using its index (position in the list).
+          - Each value, or element, is indexed starting from zero, which makes
+          it easy to access or loop through items.
         </p>
+        <p>
+          - Arrays can hold different data types, like numbers, strings, or even
+          other arrays.
+        </p>
+        <p>
+          - It is often use built-in methods like{" "}
+          <code>
+            <b>map, filter,</b>
+          </code>{" "}
+          and
+          <code>
+            <b>reduce</b>
+          </code>{" "}
+          to manipulate array data efficiently.
+        </p>
+        <pre>{arr}</pre>
       </>
     ),
   },
@@ -1781,21 +1861,22 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          Objects are collections of key-value pairs. they are used to store and
-          manage complex data of structures and used for modelling real word
-          problems.
-          <pre>
-            <code>{obj}</code>
-          </pre>
+          - Objects in JavaScript are collections of key-value pairs that let us
+          store and organize data in a structured way.
         </p>
-        <strong>or</strong>
         <p>
-          An object is a complex data type in JavaScript that allows you to
-          store collections of related data and functionality. Objects are made
-          up of properties (key-value pairs) and methods (functions that operate
-          on the object's data). They are used to represent real-world entities
-          and organize code in a structured way.
+          - The keys are usually strings or symbols, and the values can be any
+          data type — even other objects or functions.
         </p>
+        <p>
+          - I like using objects when I need to represent real-world entities,
+          like a user with properties such as name and email.
+        </p>
+        <p>
+          - They’re also the foundation of many JavaScript concepts, including
+          JSON and object-oriented programming.
+        </p>
+        <pre>{obj}</pre>
       </>
     ),
   },
@@ -1804,25 +1885,19 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          ArrayBuffer object is used to represent a generic, fixed length raw
-          binary data buffer. let buffer = new ArrayBuffer(16)
-          <pre>
-            <code>{arrBuffer}</code>
-          </pre>
+          - An ArrayBuffer in JavaScript is a low-level object that represents a
+          fixed-length block of raw binary data.
         </p>
-        <strong>or</strong>
         <p>
-          <li>ArrayBuffer is a low-level binary data buffer.</li>
-          <li>It represents a fixed-length raw binary data buffer.</li>
-          <li>
-            Used to handle binary data (e.g., files, network streams) in
-            JavaScript.
-          </li>
-          <li>
-            It itself doesn’t provide methods to manipulate data — instead, you
-            use typed arrays or DataView to read/write data in the buffer.
-          </li>
+          - It doesn’t deal directly with numbers or strings — instead, it
+          provides a way to store data that can be interpreted through typed
+          arrays, like <b>Int8Array</b> or <b>Float32Array</b>.
         </p>
+        <p>
+          - I’d use an ArrayBuffer when working with things like files, images,
+          or network streams where performance and memory control are important.
+        </p>
+        <pre>{arrBuffer}</pre>
       </>
     ),
   },
@@ -1831,92 +1906,146 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          <b>map() :</b>
-          <br />
-          - Creates a new array by applying a function to each element of the
-          original array.
-          <br />- The new array has the same length as the original.
-          <pre>
-            <code>{map}</code>
-          </pre>
-          <b>filter() :</b>
-          <br />
-          - Creates a new array with only the elements that pass a test
-          (predicate function).
-          <br />- The new array can be smaller or equal in size.
-          <pre>
-            <code>{filter}</code>
-          </pre>
-          <b>find() :</b> <br />
-          - Returns the first element that satisfies a condition (predicate
-          function).
-          <br />- Returns undefined if no elements match.
-          <pre>
-            <code>{find}</code>
-          </pre>
-          <b>forEach() :</b> <br />
-          - Executes a function on each element of the array.
-          <br />
-          - Does not return a new array — returns undefined.
-          <br />- Used for side effects like logging or updating external
-          variables.
-          <pre>
-            <code>{forEach}</code>
-          </pre>
-        </p>
-        <strong>or</strong>
-        <p>
-          <b>map()</b> creates a new array by applying a function to each
-          element of the original array, <br />
-          <b>filter()</b> creates a new array with elements that pass a test,
-          <br />
-          <b>find()</b> returns the first element that satisfies a condition,
-          and
-          <br />
-          <b>forEach()</b> executes a function on each element without returning
-          a new array.
+          In JavaScript, all four methods — <b>map, filter, find,</b> and{" "}
+          <b>forEach</b> — are used to work with arrays, but they serve
+          different purposes.
+          <p>
+            <b>map() :</b>
+            <p>
+              - Creates a new array by applying a function to each element of
+              the original array.
+            </p>
+            <p>- The new array has the same length as the original.</p>
+          </p>
+          <pre>{map}</pre>
+          <p>
+            <b>filter() :</b>
+            <p>
+              - Creates a new array with only the elements that pass a test
+              (predicate function).
+            </p>
+            <p>- The new array can be smaller or equal in size.</p>
+          </p>
+          <pre>{filter}</pre>
+          <p>
+            <b>find() :</b>
+            <p>
+              - Returns the first element that satisfies a condition (predicate
+              function).
+            </p>
+            <p>- Returns undefined if no elements match.</p>
+          </p>
+          <pre>{find} </pre>
+          <p>
+            <b>forEach() :</b>
+            <p>- Executes a function on each element of the array.</p>
+            <p>- Does not return a new array — returns undefined.</p>
+            <p>
+              - Used for side effects like logging or updating external
+              variables.
+            </p>
+          </p>
+          <pre>{forEach}</pre>
         </p>
       </>
     ),
   },
   {
-    q: "What is reducer?",
+    q: "What is reduce in JS? What is the use case of reduce in JS?",
     a: (
       <>
         <p>
-          A reducer uses reduce() to accumulate values into a single result. It
-          takes a callback function and an initial value, processing each array
-          element to produce a final output.
-          <pre>
-            <code>{reducer}</code>
-          </pre>
+          - In JavaScript,{" "}
+          <code>
+            <b>reduce()</b>
+          </code>{" "}
+          is an <b>array method</b> that lets you{" "}
+          <b>combine all elements of an array into a single value</b> by
+          applying a function repeatedly.
         </p>
-        <strong>or</strong>
         <p>
-          A reducer is a function that takes an accumulator and the current
-          value as arguments, processes them, and returns a single accumulated
-          result. It is commonly used with the reduce() method to aggregate
-          array elements into a single value, such as summing numbers or
-          combining objects.
+          - It takes a callback with an accumulator and current value, plus an
+          optional initial value.
+        </p>
+        <p>
+          - A common use case is{" "}
+          <b>summing numbers, flattening arrays, or grouping data</b>. For
+          example:
+        </p>
+        <pre>{reduce}</pre>
+        <p>
+          - It’s very powerful for transforming arrays into a single result
+          efficiently.
+        </p>
+        <strong>Use Case:</strong>
+        <p>
+          - The{" "}
+          <code>
+            <b>reduce()</b>
+          </code>{" "}
+          method in JavaScript is used whenever you want to
+          <b>combine or transform array elements into a single value</b>. Common
+          use cases include:
+          <ol>
+            <li>
+              <b>Summing or multiplying numbers</b> in an array.
+            </li>
+            <li>
+              <b>Flattening arrays</b> of arrays into one array.
+            </li>
+            <li>
+              <b>Counting or grouping objects</b> by a property.
+            </li>
+            <li>
+              <b>Building more complex data structures</b> like objects or maps
+              from arrays. For example, to count occurrences of items:
+            </li>
+          </ol>
+        </p>
+        <pre>{useReduce}</pre>
+        <p>
+          -{" "}
+          <code>
+            <b>reduce()</b>
+          </code>{" "}
+          is very flexible and can replace multiple loops or intermediate
+          arrays.
         </p>
       </>
     ),
   },
   {
-    q: "Difference between slice & splice",
+    q: "Difference between slice & splice in JS?",
     a: (
       <>
+        <p>
+          - In JavaScript, slice and splice sound similar but behave very
+          differently.
+        </p>
+        <p>
+          - <b>slice</b> is non-destructive — it returns a new array containing
+          selected elements without changing the original one.
+        </p>
+        <p>
+          - On the other hand, <b>splice</b>, modifies the original array by
+          adding, removing, or replacing elements.
+        </p>
+        <p>
+          - For example, I’d use slice when I just need a portion of data to
+          display, and splice when I actually want to update the array’s
+          contents.
+        </p>
+        <pre>{sliceSplice}</pre>
         <p>
           <b>slice()</b> returns a shallow copy of a portion of an array into a
           new array object selected from start to end (end not included) where
           start and end represent the index of items in that array. The original
-          array will not be modified. <br />
+          array will not be modified.
+        </p>
+        <p>
           <b>splice()</b> changes the contents of an array by removing or
           replacing existing elements and/or adding new elements in place. The
           original array will be modified.
-          <pre>
-            <code>{sliceSplice}</code>
-          </pre>
         </p>
       </>
     ),
@@ -1927,47 +2056,74 @@ export const JavaScriptQuestions = [
       <>
         <p>
           There are several ways to create an object in JavaScript:
-          <br />
-          1. Object Literal: Using curly braces {} to define key-value pairs.
-          <br />
-          2. Constructor Function: Using a function to create and initialize an
-          object with the new keyword.
-          <br />
-          3. Object.create(): Creating a new object with a specified prototype
-          object.
-          <br />
-          4. Class Syntax: Using the class keyword to define a blueprint for
-          creating objects.
-          <br />
-          5. Factory Function: A function that returns a new object.
-          <pre>
-            <code>{createObjects}</code>
-          </pre>
+          <ol>
+            <li>
+              <b>Object Literal:</b> Using curly braces{" "}
+              <code>
+                <b>{"{}"}</b>
+              </code>{" "}
+              to define key-value pairs.
+            </li>
+            <li>
+              <b>Constructor Function:</b> Using a function to create and
+              initialize an object with the <b>new</b> keyword.{" "}
+              <code>
+                <b>new Object()</b>
+              </code>
+            </li>
+            <li>
+              <b>Object.create():</b> Creating a new object with a specified
+              prototype object.{" "}
+              <code>
+                <b>Object.create()</b>
+              </code>
+            </li>
+            <li>
+              <b>Class Syntax:</b> Using the <b>class</b> keyword to define a
+              blueprint for creating objects.
+            </li>
+            <li>
+              <b>Factory Function:</b> A function that returns a new object.
+            </li>
+          </ol>
         </p>
+        <pre>{createObjects}</pre>
       </>
     ),
   },
   {
-    q: "Shallow clone vs Deep clone",
+    q: "Shallow clone vs Deep clone  in JS?",
     a: (
       <>
         <p>
-          A shallow clone copies only the top-level properties of an object. If
-          there are nested objects, they are still linked to the original.
-          <br /> A deep clone creates a complete copy — including all nested
-          objects — so changes to the new object won’t affect the original.
-          <pre>
-            <code>{shallowDeep}</code>
-          </pre>
+          - In JavaScript, a <b>shallow clone</b> creates a new object, but only
+          the top-level properties are copied — if those properties reference
+          other objects, they still point to the same memory.
         </p>
-        <strong>or</strong>
         <p>
-          A shallow clone creates a new object with copies of the original's
-          top-level properties, but nested objects are still references to the
-          same objects in memory.
-          <br /> A deep clone creates a new object and recursively copies all
-          nested objects, resulting in a completely independent copy.
+          - On the other hand, <b>deep clone</b>, copies everything recursively,
+          so nested objects are fully duplicated and independent of the
+          original.
         </p>
+        <p>
+          - For example,{" "}
+          <code>
+            <b>Object.assign()</b>
+          </code>{" "}
+          or the spread operator do shallow copies,
+        </p>
+        <p>
+          - while{" "}
+          <code>
+            <b>structuredClone()</b>
+          </code>{" "}
+          or using{" "}
+          <code>
+            <b>JSON.parse(JSON.stringify())</b>
+          </code>{" "}
+          can create deep copies.
+        </p>
+        <pre>{shallowDeep}</pre>
       </>
     ),
   },
@@ -1976,49 +2132,67 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          A Set is a collection of unique values, while a Map is a collection of
-          key-value pairs.
+          - In JavaScript, a <b>Set</b> and a <b>Map</b> are built-in data
+          structures.
+        </p>
+        <p>
+          - A <b>Set</b> stores unique values — no duplicates — and it is great
+          when you just need to check for the presence of items quickly.
+        </p>
+        <p>
+          - A <b>Map</b>, on the other hand, stores key-value pairs like an
+          object, but the keys can be of any type, not just strings.
+        </p>
+        <p>
+          - <b>Map</b> also maintains the insertion order and gives better
+          performance for frequent additions and lookups compared to plain
+          objects.
         </p>
       </>
     ),
   },
   {
-    q: "What is WeakMap and WeakSet?",
+    q: "What is WeakMap and WeakSet  in JS?",
     a: (
       <>
         <p>
-          A WeakMap is a collection of key-value pairs where the keys are
-          objects and the values can be any type. The keys in a WeakMap are
-          weakly referenced, meaning that if there are no other references to
-          the key object, it can be garbage collected. This makes WeakMaps
-          useful for storing metadata about objects without preventing their
-          garbage collection.
+          - In JavaScript, <b>WeakMap</b> and <b>WeakSet</b> are similar to{" "}
+          <b>Map</b> and <b>Set</b>, but with a key difference — they hold weak
+          references to their objects.
+        </p>
+        <p>
+          - That means if there’s no other reference to an object stored inside
+          them, it can be garbage-collected automatically.
+        </p>
+        <p>
+          - A <b>WeakMap</b> stores key-value pairs where keys must be objects,
+          and a <b>WeakSet</b> stores only object values.
+        </p>
+
+        <p>
+          - They don’t support iteration or size checking because their contents
+          can change as garbage collection happens.
         </p>
       </>
     ),
   },
   {
-    q: "What is DOM and DOM manipulation?",
+    q: "What is DOM and DOM manipulation  in JS?",
     a: (
       <>
         <p>
-          Document object model is representation of an HTML document as a tree
-          of nodes. A node represents an HTML element. That allows us to create,
-          change, or remove elements from the document.
-          <br /> Dom Manipulation allow you to dynamically modify the web page
-          and structure. used in web development for creating dynamic user
-          interfaces.
+          - The DOM, or Document Object Model, is a programming interface that
+          represents an HTML or XML document as a tree of nodes, where each node
+          corresponds to an element, attribute, or piece of content.
         </p>
-        <strong>or</strong>
         <p>
-          The Document Object Model (DOM) is a programming interface for web
-          documents. It represents the structure of an HTML document as a tree
-          of nodes, where each node corresponds to an element, attribute, or
-          piece of text in the document.
-          <br /> DOM manipulation refers to the process of using JavaScript to
-          dynamically change the content, structure, and style of a web page by
-          adding, removing, or modifying elements and attributes in the DOM
-          tree.
+          - DOM manipulation in JavaScript means using methods like
+          getElementById, querySelector, appendChild, or removeChild to
+          dynamically change the content, structure, or style of a web page.
+        </p>
+        <p>
+          - Essentially, it lets us interact with the page in real-time,
+          updating it without reloading.
         </p>
       </>
     ),
@@ -2027,24 +2201,22 @@ export const JavaScriptQuestions = [
     q: "Event handling",
     a: (
       <>
+        {" "}
         <p>
-          Event handling in JavaScript means writing code that listens for
-          something like a click or a keypress, and then does something in
-          response. We use addEventListener() to attach an event and a handler
-          function to an element. It helps make web pages interactive.
-          <pre>
-            <code>{eventHandling}</code>
-          </pre>
+          - Event handling in JavaScript is how we make web pages interactive by
+          responding to user actions, like clicks, typing, or mouse movements.
         </p>
-        <strong>or</strong>
         <p>
-          Event handling is the process of responding to user interactions or
-          other events that occur in a web application. In JavaScript, this is
-          typically done by attaching event listeners to HTML elements using
-          methods like addEventListener(). When an event occurs, the associated
-          event handler function is executed, allowing developers to create
-          interactive and dynamic web experiences.
+          - We can attach event listeners using methods like addEventListener,
+          specifying the event type and a callback function. The callback runs
+          whenever the event occurs.
         </p>
+        <p>
+          - This allows us to dynamically update the UI, validate forms, or
+          trigger animations, making the web page responsive to user
+          interactions.
+        </p>
+        <pre>{eventHandling}</pre>
       </>
     ),
   },
@@ -2053,22 +2225,20 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          Event delegation is a technique in JavaScript where we add an event
-          listener to a parent element instead of adding it to each individual
-          child. This works because events bubble up from the target element to
-          its ancestors.
-          <pre>
-            <code>{eventDelegation}</code>
-          </pre>
+          - Event delegation is a technique in JavaScript where instead of
+          adding event listeners to multiple child elements, we attach a single
+          listener to their parent.
         </p>
-        <strong>or</strong>
         <p>
-          Event delegation is a technique in JavaScript where a single event
-          listener is added to a parent element to manage events for its child
-          elements. This approach takes advantage of event bubbling, allowing
-          the parent to handle events for dynamically added or removed children,
-          improving performance and reducing memory usage.
+          - The event naturally bubbles up the DOM, and we can identify which
+          child triggered it using <b>event.target</b>.
         </p>
+        <p>
+          - This improves performance and makes dynamic content handling easier
+          — for example, when new elements are added to a list, we don’t need to
+          reattach listeners for each one.
+        </p>
+        <pre>{eventDelegation}</pre>
       </>
     ),
   },
@@ -2077,23 +2247,34 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          Event bubbling in JavaScript means that when an event occurs on a
-          child element, it first runs its own event handler and then bubbles up
-          to its parent, and then to the next parent, and so on, up to the root
-          of the DOM.
-          <pre>
-            <code>{eventBubbling}</code>
-          </pre>
+          - Event bubbling in JavaScript is the process where an event starts
+          from the deepest target element and then bubbles up through its parent
+          elements in the DOM hierarchy.
         </p>
-        <strong>or</strong>
         <p>
-          Event bubbling is a mechanism in JavaScript where an event triggered
-          on a child element propagates up through its parent elements in the
-          DOM hierarchy. This means that when an event occurs on a child, it
-          first triggers the event handler on that child, and then the event
-          bubbles up to its parent elements, triggering their event handlers as
-          well, until it reaches the root of the document.
+          - For example, if you click a button inside a{" "}
+          <code>
+            <b>div</b>
+          </code>
+          , the click event first runs on the button, then on the{" "}
+          <code>
+            <b>div</b>
+          </code>
+          , and continues up to the{" "}
+          <code>
+            <b>document</b>
+          </code>
+          .
         </p>
+        <p>
+          - It’s useful when using techniques like event delegation, but
+          sometimes we stop it with{" "}
+          <code>
+            <b>event.stopPropagation()</b>
+          </code>{" "}
+          to prevent parent handlers from being triggered.
+        </p>
+        <pre>{eventBubbling}</pre>
       </>
     ),
   },
@@ -2102,23 +2283,22 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          The opposite of event bubbling is called event capturing. In bubbling,
-          the event starts at the target element and moves up the DOM tree. In
-          capturing, the event is caught from the top (ancestor) down to the
-          target before it even reaches the child element.
-          <pre>
-            <code>{eventCapturing}</code>
-          </pre>
+          - Event capturing, also called the trickle-down phase, is the opposite
+          of event bubbling.
         </p>
-        <strong>or</strong>
         <p>
-          Event capturing is a mechanism in JavaScript where an event starts at
-          the root of the DOM and propagates down to the target element. During
-          this phase, event handlers on parent elements can intercept the event
-          before it reaches the target element. This is the opposite of event
-          bubbling, where the event propagates from the target element up to the
-          root.
+          - In this phase, an event starts from the top of the DOM — like the
+          <b>document</b> — and moves down to the target element.
         </p>
+        <p>
+          - By default, JavaScript uses bubbling, but we can enable capturing by
+          passing <b>true</b> as the third argument in <b>addEventListener</b>.
+        </p>
+        <p>
+          - It is less commonly used, but it is helpful when you need to handle
+          events before they reach their target.
+        </p>
+        <pre>{eventCapturing}</pre>
       </>
     ),
   },
@@ -2130,54 +2310,81 @@ export const JavaScriptQuestions = [
         <p>
           <b>Local Storage, Session Storage</b>, and <b>Cookies</b> in
           JavaScript — all used to store data in the browser, but with different
-          behaviour. <br />
-          <b>Local Storage:</b> Stores data with no expiration. Data persists
-          even after browser closed or reopened. It has 5 - 10mb capacity.
-          <br />
-          <b>Session Storage:</b> Stores data with expiration. Data is lost when
-          browser is closed. It has upto 5mb capacity.
-          <br />
-          <b>Cookies:</b> Stores small amount of data, can be sent to server
-          with every HTTP request. It has expiration. It has 4kb capacity.
+          behaviour.
+          <p>
+            <b>Local Storage:</b> Stores data with no expiration. Data persists
+            even after browser closed or reopened. It has 5 - 10mb capacity.
+          </p>
+          <p>
+            <b>Session Storage:</b> Stores data with expiration. Data is lost
+            when browser is closed. It has upto 5mb capacity.
+          </p>
+          <p>
+            <b>Cookies:</b> Stores small amount of data, can be sent to server
+            with every HTTP request. It has expiration. It has 4kb capacity.
+          </p>
         </p>
         <strong>or</strong>
         <p>
           <b>Local Storage, Session Storage</b>, and <b>Cookies</b> are all ways
           to store data on the client side in a web browser, but they have
           different characteristics and use cases:
-          <br />
-          <b>1. Local Storage:</b>
-          <br />
-          - Data persists even after the browser is closed and reopened.
-          <br />
-          - Can store larger amounts of data (typically up to 5-10 MB).
-          <br />
-          - Data is stored as key-value pairs and is accessible only within the
-          same origin (domain).
-          <br /> - Commonly used for storing user preferences, settings, and
-          other non-sensitive data.
-          <br />
-          <b>2. Session Storage:</b>
-          <br />
-          - Data persists only for the duration of the page session (until the
-          browser or tab is closed).
-          <br />
-          - Can store similar amounts of data as Local Storage (typically up to
-          5-10 MB).
-          <br /> - Data is also stored as key-value pairs and is accessible only
-          within the same origin (domain).
-          <br /> - Commonly used for storing temporary data that should not
-          persist across sessions, such as form data or temporary user inputs.
-          <br /> <b>3. Cookies:</b>
-          <br /> - Data can have an expiration date and can persist across
-          sessions if set to do so.
-          <br /> - Typically used for storing small amounts of data (up to 4 KB
-          per cookie).
-          <br /> - Data is sent to the server with every HTTP request, making it
-          suitable for session management, authentication, and tracking.
-          <br /> - Cookies can be set with various attributes like Secure,
-          HttpOnly, and SameSite to enhance security.
         </p>
+        <ol>
+          <li>
+            <b>Local Storage:</b>
+            <p>
+              - Data persists even after the browser is closed and reopened.
+            </p>
+            <p>- Can store larger amounts of data (typically up to 5-10 MB).</p>
+            <p>
+              - Data is stored as key-value pairs and is accessible only within
+              the same origin (domain).
+            </p>
+            <p>
+              - Commonly used for storing user preferences, settings, and other
+              non-sensitive data.
+            </p>
+          </li>
+          <li>
+            <b>Session Storage:</b>
+            <p>
+              - Data persists only for the duration of the page session (until
+              the browser or tab is closed).
+            </p>
+            <p>
+              - Can store similar amounts of data as Local Storage (typically up
+              to 5-10 MB).
+            </p>
+            <p>
+              - Data is also stored as key-value pairs and is accessible only
+              within the same origin (domain).
+            </p>
+            <p>
+              - Commonly used for storing temporary data that should not persist
+              across sessions, such as form data or temporary user inputs.
+            </p>
+          </li>
+          <li>
+            <b>Cookies:</b>
+            <p>
+              - Data can have an expiration date and can persist across sessions
+              if set to do so.
+            </p>
+            <p>
+              - Typically used for storing small amounts of data (up to 4 KB per
+              cookie).
+            </p>
+            <p>
+              - Data is sent to the server with every HTTP request, making it
+              suitable for session management, authentication, and tracking.
+            </p>
+            <p>
+              - Cookies can be set with various attributes like Secure,
+              HttpOnly, and SameSite to enhance security.
+            </p>
+          </li>
+        </ol>
       </>
     ),
   },
@@ -2186,15 +2393,24 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          <b>innerText:</b> Represents the visible text content of an element,
+          In JavaScript, <b>innerText, textContent,</b> and <b>innerHTML</b> are
+          all used to get or set content inside an element, but they work
+          differently.
+        </p>
+        <p>
+          <b>innerText:</b> Returns the visible text content of an element,
           taking into account CSS styles like display and visibility. It
           triggers a reflow to compute the visible text.
-          <br /> <b>textContent:</b> Represents the text content of an element
-          and its descendants, ignoring CSS styles. It does not trigger a reflow
-          and is generally faster than innerText.
-          <br /> <b>innerHTML:</b> Represents the HTML content of an element,
-          including tags. It allows you to get or set the HTML structure inside
-          an element, but can pose security risks if not handled properly (e.g.,
+        </p>
+        <p>
+          <b>textContent:</b> Returns the text content of an element and its
+          descendants, ignoring CSS styles. It does not trigger a reflow and is
+          generally faster than innerText.
+        </p>
+        <p>
+          <b>innerHTML:</b> Returns the HTML content of an element, including
+          tags. It allows you to get or set the HTML structure inside an
+          element, but can pose security risks if not handled properly (e.g.,
           XSS attacks).
         </p>
       </>
@@ -2205,62 +2421,58 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          Error handling in JavaScript is the process of catching and managing
-          errors to prevent the application from crashing. It helps us handle
-          unexpected situations gracefully.
-          <pre>
-            <code>{errorHandling}</code>
-          </pre>
+          - Error handling in JavaScript helps us to manage unexpected issues in
+          our code, like invalid inputs or failed network requests, without
+          crashing the program.
         </p>
-        <strong>or</strong>
         <p>
-          Error handling in JavaScript involves using constructs like try-catch
-          blocks to catch and manage runtime errors. This allows developers to
-          handle exceptions gracefully, provide meaningful error messages, and
-          maintain application stability.
+          - The most common way is using <b>try...catch...finally</b>, where we
+          wrap risky code in a <b>try</b> block, handle errors in <b>catch</b>,
+          and optionally run cleanup code in <b>finally</b>.
         </p>
+        <p>
+          - We can also throw custom errors using the <b>throw</b> statement.
+        </p>
+        <p>
+          - In asynchronous code, we often handle errors with <b>.catch()</b> in
+          Promises or <b>try...catch</b> inside
+          <b>async/await</b> functions.
+        </p>
+        <pre>{errorHandling}</pre>
       </>
     ),
   },
   {
-    q: "What is reference error, type error and syntax error?",
+    q: "What is reference error, type error and syntax error in JS?",
     a: (
       <>
         <p>
+          In JavaScript, different types of errors are indicates specific
+          problems.
+        </p>
+        <p>
           <b>ReferenceError:</b> Occurs when you try to access a variable that
           does not exist or is not defined in the current scope.
-          <br />
+        </p>
+        <p>
           <b>TypeError:</b> Happens when you perform an operation on a value of
           the wrong type or try to use a method/property that doesn’t exist on
           that type.
-          <br />
-          <b>SyntaxError:</b>
-          Raised when your code breaks the JavaScript syntax rules — i.e., code
-          cannot be parsed.
-          <br />
-          <br />
-          <b>Short Interview Answer:</b>
-          <br />
+        </p>
+        <p>
+          <b>SyntaxError:</b> Raised when the code structure itself is invalid,
+          — like a missing bracket or keyword.
+        </p>
+
+        <pre>{errorTypes}</pre>
+
+        <strong>Short Interview Answer:</strong>
+        <p>
           <b>ReferenceError:</b> Using a variable that isn’t declared.
           <br />
           <b>TypeError:</b> Using a value in an invalid way for its type.
           <br />
           <b>SyntaxError:</b> Mistakes in code syntax that prevent parsing.
-          <pre>
-            <code>{errorTypes}</code>
-          </pre>
-        </p>
-        <strong>or</strong>
-        <p>
-          <b>ReferenceError:</b> This error occurs when you try to access a
-          variable that has not been declared or is out of scope.
-          <br />
-          <b>TypeError:</b> This error occurs when you perform an operation on a
-          value of the wrong type, such as calling a method that doesn’t exist
-          on that type.
-          <br />
-          <b>SyntaxError:</b> This error occurs when there is a mistake in the
-          syntax of your code, preventing it from being parsed correctly.
         </p>
       </>
     ),
@@ -2270,24 +2482,23 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          The try-catch-finally construct is used for runtime error handling.
-          Code inside <code>try</code> runs first; if an exception occurs, the
-          <code>catch</code> block receives the error and can handle it. The
-          <code>finally</code> block (optional) runs after try/catch whether an
-          error occurred or not — useful for cleanup.
-          <pre>
-            <code>{tryCatchFinally}</code>
-          </pre>
+          - In JavaScript, <b>try...catch...finally</b> is used for error
+          handling.
         </p>
-        <strong>or</strong>
         <p>
-          The try-catch-finally construct in JavaScript is used for error
-          handling. The code inside the try block is executed first. If an error
-          occurs, the catch block is executed, allowing you to handle the error.
-          The finally block (optional) is executed after the try and catch
-          blocks, regardless of whether an error occurred or not, and is
-          typically used for cleanup tasks.
+          - Code inside the <b>try</b> block is executed first, and if an error
+          occurs, the <b>catch</b> block runs to handle it gracefully —
+          preventing the app from crashing.
         </p>
+        <p>
+          - The <b>finally</b> block runs no matter what, whether there was an
+          error or not, and it is often used for cleanup tasks like closing
+          connections or resetting variables.
+        </p>
+        <p>- This structure makes code more reliable and easier to debug.</p>
+        <pre>
+          <code>{tryCatchFinally}</code>
+        </pre>
       </>
     ),
   },
@@ -2296,91 +2507,94 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          In JavaScript, a Promise is an object that represents the eventual
-          completion (or failure) of an asynchronous operation, and its
-          resulting value.
-          <strong>Promise States:</strong>
-          <b>pending:</b> initial state, not fulfilled or rejected. <br />
-          <b>fulfilled:</b> operation completed successfully.
-          <br />
-          <b>rejected:</b> operation failed.
-          <pre>
-            <code>{promise}</code>
-          </pre>
+          - A Promise in JavaScript is an object that represents the eventual
+          completion or failure of an asynchronous operation.
         </p>
-        <strong>or</strong>
+        <p>- It has three states — pending, fulfilled, and rejected.</p>
         <p>
-          A Promise is an object in JavaScript that represents the eventual
-          completion (or failure) of an asynchronous operation and its resulting
-          value. It allows you to handle asynchronous tasks in a more manageable
-          way, avoiding deeply nested callbacks.
+          - Promises helps us to write cleaner async code without falling into
+          callback hell.
+        </p>
+        <p>
+          - We handle results using <b>.then()</b> for success and{" "}
+          <b>.catch()</b> for errors, and <b>.finally()</b> for cleanup.
+        </p>
+        <p>
+          - Promises are also the foundation of async/await, which makes
+          asynchronous code look more like synchronous code.
+        </p>
+        <pre>{promise}</pre>
+      </>
+    ),
+  },
+  {
+    q: "Why use Promises in JS?",
+    a: (
+      <>
+        <p>
+          - In JavaScript, Promises are used to handle asynchronous operations
+          in a more readable and manageable way.
+        </p>
+        <p>
+          - Before Promises, callbacks often led to messy, nested code — what we
+          call ‘callback hell.’
+        </p>
+        <p>
+          - Promises solve that by letting us chain actions by using .then() and
+          handle errors with .catch().
+        </p>
+        <p>
+          - They make async logic easier to follow, improve error handling, and
+          work seamlessly with async/await, which gives us cleaner, more
+          synchronous-looking code.
         </p>
       </>
     ),
   },
   {
-    q: "Why use Promises?",
+    q: "What is Promise chaining in JS?",
     a: (
       <>
         <p>
-          Promises help manage asynchronous code (like HTTP requests or timers)
-          in a cleaner and more manageable way, avoiding deeply nested callbacks
-          (also known as "callback hell").
+          - Promise chaining in JavaScript is a technique to perform multiple
+          asynchronous operations in sequence.
         </p>
-        <strong>or</strong>
         <p>
-          Promises are used to handle asynchronous operations in JavaScript,
-          providing a cleaner and more manageable way to work with async code
-          compared to traditional callbacks. They help avoid "callback hell" and
-          make it easier to chain multiple async operations together.
+          - Each <b>.then()</b> returns a new Promise, so the next{" "}
+          <b>.then()</b> can use the result of the previous one.
         </p>
+        <p>
+          - This helps avoid deeply nested callbacks and keeps code readable.
+        </p>
+        <p>
+          - You can also handle errors at the end of the chain using{" "}
+          <b>.catch()</b>, which makes error handling consistent across multiple
+          async steps.
+        </p>
+        <pre>{promiseChaining}</pre>
       </>
     ),
   },
   {
-    q: "What is Promise chaining",
+    q: "How async/await works internally in JS?",
     a: (
       <>
         <p>
-          The process of executing a sequence of asynchronous tasks one after
-          another using promises is known as promise chaining. It involves
-          multiple .then() methods to a promise to perform series of task in
-          specific order.
-          <pre>
-            <code>{promiseChaining}</code>
-          </pre>
+          - <b>async/await</b> in JavaScript is a syntactic sugar over Promises,
+          making asynchronous code look like a synchronous. When an <b>async</b>{" "}
+          function runs, it always returns a Promise.
         </p>
-        <strong>or</strong>
         <p>
-          Promise chaining is a technique in JavaScript where multiple
-          asynchronous operations are performed in sequence by chaining .then()
-          methods to a promise. Each .then() returns a new promise, allowing for
-          a series of operations to be executed one after the other in a
-          readable manner.
+          - The <b>await</b> keyword pauses the function execution until the
+          awaited Promise resolves or rejects, but it doesn’t block the main
+          thread — other code keeps running.
         </p>
-      </>
-    ),
-  },
-  {
-    q: "How async/await works internally",
-    a: (
-      <>
         <p>
-          async/await is syntactic sugar over Promises. It makes asynchronous
-          code look and behave like synchronous code using generators and the
-          event loop.
-          <pre>
-            <code>{asyncAwait}</code>
-          </pre>
+          - Internally, the JavaScript engine uses the event loop and microtasks
+          to resume the function once the Promise settles, which makes async
+          code easier to read and maintain.
         </p>
-        <strong>or</strong>
-        <p>
-          async/await is built on top of Promises and uses generators and the
-          event loop to handle asynchronous operations. When an async function
-          is called, it returns a Promise. The await keyword pauses the
-          execution of the async function until the Promise is resolved or
-          rejected, allowing for a more synchronous-like flow of code.
-        </p>
+        <pre>{asyncAwait}</pre>
       </>
     ),
   },
@@ -2389,38 +2603,50 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          To handle multiple asynchronous operations and wait for all to
-          complete, I would use Promise.all(). It takes an array of promises and
-          returns a single promise that resolves when all of them have resolved,
-          or rejects if any one fails.
+          - To handle multiple asynchronous operations and wait for all of them
+          to complete, I’d use Promise.all().
         </p>
-        <strong>or</strong>
         <p>
-          I would use Promise.all() to handle multiple asynchronous operations
-          and wait for all to complete. It takes an array of promises and
-          returns a single promise that resolves when all the input promises
-          have resolved, or rejects if any of them reject.
+          - It takes an array of Promises and returns a single Promise that
+          resolves when all of them succeed or rejects if any one fails.
+        </p>
+        <p>
+          - This is useful when, for example, you need to fetch data from
+          multiple APIs in parallel.
+        </p>
+        <p>
+          - For cases where I want to handle results individually even if some
+          fail, I could use Promise.allSettled(), which gives the outcome of
+          each Promise without failing the entire batch.
         </p>
       </>
     ),
   },
   {
-    q: "What is the difference between Promise.all, Promise.allSettled, Promise.race, and Promise.any?",
+    q: "What is the difference between Promise.all, Promise.allSettled, Promise.race, and Promise.any in JS?",
     a: (
       <>
         <p>
+          In JavaScript, these Promise methods help manage multiple asynchronous
+          operations differently.
+        </p>
+        <p>
           <b>Promise.all():</b> Waits for all promises to resolve. If any
           promise rejects, it rejects immediately with that reason.
-          <br /> <b>Promise.allSettled():</b> Waits for all promises to settle
-          (either resolve or reject) and returns an array of their results.
-          <br /> <b>Promise.race():</b> Waits for the first promise to settle
-          (resolve or reject) and returns its result.
-          <br /> <b>Promise.any():</b> Waits for the first promise to resolve.
-          If all promises reject, it rejects with an AggregateError.
-          <pre>
-            <code>{promiseMethods}</code>
-          </pre>
         </p>
+        <p>
+          <b>Promise.allSettled():</b> Waits for all promises to settle (either
+          resolve or reject) and returns an array of their results.
+        </p>
+        <p>
+          <b>Promise.race():</b> Waits for the first promise to settle (resolve
+          or reject) and returns its result.
+        </p>
+        <p>
+          <b>Promise.any():</b> Waits for the first promise to resolve. If all
+          promises reject, it rejects with an AggregateError.
+        </p>
+        <pre>{promiseMethods}</pre>
       </>
     ),
   },
@@ -2429,23 +2655,21 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          JavaScript is single-threaded, meaning it runs one thing at a time.
-          The event loop is a mechanism that helps JavaScript handle
-          asynchronous tasks — like setTimeout, promises, or user events — by
-          putting them in a queue and executing them when the main stack is
-          clear.
-          <br />
-          Concurrency in JavaScript means it can handle multiple things at once
-          — like starting a timeout while continuing other work — but it only
-          runs one task at a time through the event loop.
+          - In JavaScript, the event loop allows the language to handle
+          concurrency despite being single-threaded.
         </p>
-        <strong>or</strong>
         <p>
-          The event loop is a core part of JavaScript's concurrency model. It
-          allows JavaScript to perform non-blocking operations by offloading
-          tasks to the browser or Node.js environment, and then executing them
-          when the main thread is free. This enables JavaScript to handle
-          multiple tasks concurrently, even though it is single-threaded.
+          - The call stack executes synchronous code, while asynchronous
+          operations like timers, network requests, or Promises are handled in
+          the task queue or microtask queue.
+        </p>
+        <p>
+          - The event loop continuously checks the stack and moves tasks from
+          the queue to the stack when it’s empty.
+        </p>
+        <p>
+          - This way, JavaScript can perform non-blocking operations and handle
+          multiple tasks seemingly at the same time, without multi-threading.
         </p>
       </>
     ),
@@ -2455,23 +2679,23 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          Debouncing ensures a function is only called after a specified delay
-          has passed since the last time the event was triggered. This is useful
-          for operations that should only happen after the user stops performing
-          an action, such as:Auto-saving after typing stops, Submitting a search
-          query after typing ends.
-          <pre>
-            <code>{debouncing}</code>
-          </pre>
+          - Debouncing in JavaScript is a technique to limit how often a
+          function is executed.
         </p>
-        <strong>or</strong>
         <p>
-          Debouncing is a technique used to limit the rate at which a function
-          is executed. It ensures that the function is only called after a
-          specified delay has passed since the last time it was invoked. This is
-          useful for optimizing performance in scenarios where a function is
-          triggered frequently, such as during window resizing or input events.
+          - It’s commonly used for performance optimization, like handling input
+          events or window resizing.
         </p>
+        <p>
+          - Basically, the function is only called after a specified delay has
+          passed since the last time it was triggered.
+        </p>
+        <p>
+          - This prevents it from running too frequently and improves efficiency
+          — for example, ensuring an API call is only made once the user stops
+          typing instead of on every keystroke.
+        </p>
+        <pre>{debouncing}</pre>
       </>
     ),
   },
@@ -2480,23 +2704,23 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          Throttling ensures a function is called at most once every X
-          millisecond, regardless of how many times the event fires. It's useful
-          when you want to allow periodic execution during continuous events,
-          such as:Updating scroll position. Animating on mouse move.
-          <pre>
-            <code>{throttling}</code>
-          </pre>
+          - Throttling in JavaScript is a technique to control how often a
+          function is executed over time.
         </p>
-        <strong>or</strong>
         <p>
-          Throttling is a technique used to limit the frequency at which a
-          function is executed. It ensures that the function is only called at
-          most once every specified interval, regardless of how many times it is
-          triggered. This is useful for optimizing performance in scenarios
-          where a function is called repeatedly, such as during scrolling or
-          mouse movement.
+          - Unlike debouncing, which delays execution until the activity stops,
+          throttling ensures the function runs at most once in a specified
+          interval.{" "}
         </p>
+        <p>
+          - It’s useful for tasks like handling scroll or resize events, where
+          continuous execution could hurt performance.{" "}
+        </p>
+        <p>
+          - For example, a scroll event handler might be throttled to run once
+          every 200 milliseconds instead of firing hundreds of times per second.
+        </p>
+        <pre>{throttling}</pre>
       </>
     ),
   },
@@ -2523,19 +2747,19 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          A memory leak in JavaScript is when a program keeps using memory it no
-          longer needs. Over time, this can slow down or crash the app. It
-          usually happens when objects are unintentionally kept in memory, such
-          as through unused references, event listeners, or global variables.
+          - A Memory leak in JavaScript occurs when memory that is no longer
+          needed by the program is not released, leading to consume more and
+          more memory over time.
         </p>
-        <strong>or</strong>
         <p>
-          A memory leak in JavaScript occurs when memory that is no longer
-          needed by the program is not released, leading to increased memory
-          usage over time. This can happen due to unintended references to
-          objects, such as through closures, event listeners, or global
-          variables, preventing the garbage collector from reclaiming that
-          memory.
+          - This can happens due to forgotten timers or intervals, objects, such
+          as through closures, event listeners, or global variables, preventing
+          the garbage collector from reclaiming that memory.
+        </p>
+        <p>
+          - Memory leaks can leads to slow down applications or even crash them,
+          so tools like Chrome DevTools or Node’s memory profiler are often used
+          to detect and fix them.
         </p>
       </>
     ),
@@ -2545,19 +2769,29 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          Memory management in JavaScript involves allocating, using, and
-          releasing memory efficiently while the application runs. JavaScript
-          uses automatic memory management through a process called garbage
-          collection, so developers don't manage memory directly like in lower
-          level languages (e.g., C).
-        </p>
-        <strong>or</strong>
-        <p>
           Memory management in JavaScript is handled automatically through a
           process called garbage collection. The JavaScript engine allocates
           memory for variables and objects when they are created, and it
           automatically frees up memory that is no longer needed by the program,
           helping to prevent memory leaks and optimize performance.
+        </p>
+        <strong>or</strong>
+        <p>
+          - Memory management in JavaScript is mostly handled automatically
+          through garbage collection.
+        </p>
+        <p>
+          - The engine keeps track of which objects are still reachable and
+          frees memory for objects that are no longer referenced.
+        </p>
+        <p>
+          - Common patterns include avoiding unnecessary global variables,
+          clearing timers or event listeners when no longer needed, and being
+          careful with closures to prevent retaining large objects.
+        </p>
+        <p>
+          - Efficient memory management helps keep applications fast and
+          prevents leaks over time.
         </p>
       </>
     ),
@@ -2574,10 +2808,20 @@ export const JavaScriptQuestions = [
         </p>
         <strong>or</strong>
         <p>
-          Garbage collection in JavaScript is an automatic memory management
-          process that identifies and frees up memory occupied by objects that
-          are no longer reachable or needed by the program. This helps prevent
-          memory leaks and ensures efficient use of memory resources.
+          - Garbage collection in JavaScript is the process by which the engine
+          automatically frees memory that’s no longer needed by the program.
+        </p>
+        <p>
+          - The most common strategy is mark-and-sweep, where the engine tracks
+          which objects are reachable and marks them as in use.
+        </p>
+        <p>
+          - Anything not reachable — like objects without references — gets
+          cleared from memory.
+        </p>
+        <p>
+          - It will helps to prevent memory leaks and keeps applications running
+          efficiently without the developer having to manually manage memory.
         </p>
       </>
     ),
@@ -2587,19 +2831,20 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          Performance optimization in JavaScript means writing code that runs
-          faster and uses resources efficiently. This includes reducing DOM
-          updates, avoiding unnecessary calculations, using techniques like
-          memoization, debouncing, lazy loading, and using efficient data
-          structures."{" "}
+          - Performance optimization in JavaScript involves writing code that
+          runs efficiently and uses minimal resources.
         </p>
-        <strong>or</strong>
         <p>
-          Performance optimization in JavaScript involves techniques and best
-          practices to improve the speed and efficiency of code execution. This
-          can include minimizing DOM manipulations, reducing memory usage,
-          optimizing algorithms, using asynchronous programming, and leveraging
-          browser caching and lazy loading.
+          - Common strategies include minimizing DOM manipulations, debouncing
+          or throttling event handlers, using efficient loops and data
+          structures, caching values instead of recalculating them, and avoiding
+          memory leaks.
+        </p>
+        <p>
+          - Tools like Chrome DevTools or Lighthouse help profile and identify
+          bottlenecks, while modern techniques like lazy loading, code
+          splitting, and using requestAnimationFrame for animations further
+          improve performance.
         </p>
       </>
     ),
@@ -2610,40 +2855,27 @@ export const JavaScriptQuestions = [
       <>
         <p>
           To avoid memory leaks in JavaScript, follow these best practices:
-          <br />
-          1. Remove event listeners when they are no longer needed.
-          <br />
-          2. Avoid global variables that persist longer than necessary.
-          <br />
-          3. Use weak references (WeakMap, WeakSet) for objects that can be
-          garbage collected.
-          <br />
-          4. Clear intervals and timeouts when they are no longer needed.
-          <br />
-          5. Be cautious with closures that may hold references to outer scope
-          variables.
-          <br />
-          6. Regularly profile and monitor memory usage during development.
-          <br /> 7. Use tools like Chrome DevTools to identify and fix memory
-          leaks.
-        </p>
-        <strong>or</strong>
-        <p>
-          To avoid memory leaks in JavaScript, you can follow these best
-          practices: 1. Remove event listeners when they are no longer needed.
-          <br />
-          2. Avoid creating global variables that persist longer than necessary.
-          <br />
-          3. Use WeakMap or WeakSet for objects that can be garbage collected.
-          <br />
-          4. Clear intervals and timeouts when they are no longer needed.
-          <br />
-          5. Be cautious with closures that may hold references to outer scope
-          variables.
-          <br />
-          6. Regularly profile and monitor memory usage during development.
-          <br />
-          7. Use tools like Chrome DevTools to identify and fix memory leaks.
+          <ol>
+            <li>Remove event listeners when they are no longer needed.</li>
+            <li>Avoid global variables that persist longer than necessary.</li>
+            <li>
+              Use weak references (WeakMap, WeakSet) for objects that can be
+              garbage collected.
+            </li>
+            <li>
+              Clear intervals and timeouts when they are no longer needed.
+            </li>
+            <li>
+              Be cautious with closures that may hold references to outer scope
+              variables.
+            </li>
+            <li>
+              Regularly profile and monitor memory usage during development.
+            </li>
+            <li>
+              Use tools like Chrome DevTools to identify and fix memory leaks.
+            </li>
+          </ol>
         </p>
       </>
     ),
@@ -2653,19 +2885,23 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          A module in JavaScript is a reusable piece of code that’s stored in
-          its own file and can export functions, variables, or classes for use
-          in other files. It helps keep code organized, maintainable, and
-          separated by functionality — following the principle of separation of
-          concerns.
+          - In JavaScript, a module is a reusable piece of code that
+          encapsulates functionality, making it easier to maintain and avoid
+          polluting the global scope.
         </p>
-        <strong>or</strong>
         <p>
-          A module in JavaScript is a self-contained piece of code that can
-          export functions, objects, or values for use in other files. Modules
-          help organize code, promote reusability, and manage dependencies. You
-          can work with modules using the ES6 import/export syntax or CommonJS
-          require/module.exports in Node.js.
+          - You can export functions, objects, or variables from one file using
+          <b>export</b> and import them into another using <b>import</b>.
+        </p>
+        <p>
+          - Modules can be either <b>ES6 modules</b> using <b>import/export</b>{" "}
+          or older
+          <b>CommonJS modules</b> using <b>require/module.exports</b> in
+          Node.js.
+        </p>
+        <p>
+          - They help organize code, promote reusability, and improve
+          readability in larger projects.
         </p>
       </>
     ),
@@ -3048,6 +3284,63 @@ export const JavaScriptQuestions = [
           <code>
             <b>yield.</b>
           </code>
+        </p>
+      </>
+    ),
+  },
+  {
+    q: "What are Iterator functions in JS?",
+    a: (
+      <>
+        <p>
+          - In JavaScript, iterators are objects that let you traverse through a
+          collection one element at a time.
+        </p>
+        <p>
+          - An object becomes iterable if it implements a{" "}
+          <code>
+            <b>next()</b>
+          </code>{" "}
+          method that returns{" "}
+          <code>
+            <b>{"{ value, done }"}</b>
+          </code>
+          .
+        </p>
+        <p>
+          - Arrays, strings, and many built-in objects are iterable by default.
+        </p>
+        <p>
+          - You can also create custom iterators using generator functions. For
+          example:
+        </p>
+        <pre>{iterator}</pre>
+        <p>
+          - Iterators are the foundation of for…of loops and allow lazy
+          evaluation of sequences.
+        </p>
+      </>
+    ),
+  },
+  {
+    q: "What are Interceptors in JS?",
+    a: (
+      <>
+        <p>
+          - In JavaScript, <b>interceptors</b> are functions that let you{" "}
+          <b>intercept and modify requests or responses</b> in libraries like
+          Axios or frameworks like Angular.
+        </p>
+        <p>
+          - They are commonly used for{" "}
+          <b>logging, authentication, or error handling</b> before the request
+          is sent or after a response is received. For example, in Axios:
+        </p>
+        <pre>{interceptors}</pre>
+        <p>
+          - This adds an auth token to every outgoing request. Interceptors
+          provide a centralized way to <b>handle cross-cutting concerns</b> in
+          your application.
         </p>
       </>
     ),
