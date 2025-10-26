@@ -27,7 +27,7 @@ export default function InterviewQuestions() {
   return (
     <main className="iq-root">
       <Navbar active={active} onChange={setActive} />
-      <h1>{active} Interview Questions</h1>
+      <h1 className="heading">{active} Interview Questions</h1>
       <p className="iq-intro">Tap a question to reveal the answer.</p>
       <section className="iq-list">
         {list.map((t, i) => (
