@@ -19,17 +19,124 @@ const comment = `
 
 export const HTMLQuestions = [
   {
-    q: "What is HTML and why is it used?",
+    q: "What is HTML?",
     a: (
       <>
         <p>
-          HTML (HyperText Markup Language) is the standard language used to
-          create and structure content on the web. It provides the basic
-          building blocks for web pages by defining elements such as headings,
-          paragraphs, links, images, and more. HTML is used because it allows
-          browsers to interpret and display content in a structured and
-          accessible way, making it possible for users to view and interact with
-          websites.
+          - <b>HTML</b> stands for <b>HyperText Markup Language</b>.
+        </p>
+        <p>
+          - In simple terms,
+          <b>HTML is the basic structure or skeleton of a web page</b>.
+        </p>
+        <p>
+          - It tells the browser what each piece of content is — like this is a
+          heading, this is a button, this is a form, this is an image — but not
+          how it should look. Styling comes from CSS, and behavior comes from
+          JavaScript.
+        </p>
+        <p>
+          - Without HTML, there would be no structured content on the web—it’s
+          the backbone of every website.
+        </p>
+      </>
+    ),
+  },
+  {
+    q: "What are semantic HTML elements?",
+    a: (
+      <>
+        <p>
+          - Semantic HTML elements are{" "}
+          <b>HTML tags that clearly describe their meaning and purpose</b>, both
+          to the browser and to developers.
+        </p>
+        <p>
+          - Instead of using generic tags like{" "}
+          <code>
+            <b>{"<div>"}</b>
+          </code>{" "}
+          or{" "}
+          <code>
+            <b>{"<span>"}</b>
+          </code>
+          everywhere, semantic elements tell what the content actually is.
+        </p>
+        <p>
+          - For example:
+          <ul>
+            <li>
+              <code>
+                <b>{"<header>"}</b>
+              </code>{" "}
+              for page or section headers
+            </li>
+            <li>
+              <code>
+                <b>{"<nav>"}</b>
+              </code>{" "}
+              for navigation menus
+            </li>
+            <li>
+              <code>
+                <b>{"<main>"}</b>
+              </code>{" "}
+              for the main content
+            </li>
+            <li>
+              <code>
+                <b>{"<section>"}</b>
+              </code>{" "}
+              and{" "}
+              <code>
+                <b>{"<article>"}</b>
+              </code>{" "}
+              for content grouping
+            </li>
+            <li>
+              <code>
+                <b>{"<footer>"}</b>
+              </code>{" "}
+              for footer information
+            </li>
+          </ul>
+        </p>
+        <p>
+          - In real projects, I use semantic HTML because it improves
+          accessibility — screen readers can understand the page structure
+          better. It also helps with SEO, since search engines can identify
+          important content more easily.
+        </p>
+        <p>
+          - Another benefit is code readability and maintenance. When someone
+          else reads the code, it’s much easier to understand the layout without
+          digging through multiple {"<div>"}s.
+        </p>
+      </>
+    ),
+  },
+  {},
+  {
+    q: "HTML4 vs HTML5",
+    a: (
+      <>
+        <p>
+          - HTML5 is the modern version of HTML4. - While HTML4 focused mostly
+          on structure and presentation with limited support for multimedia,
+          HTML5 introduced new semantic elements like{" "}
+          <code>
+            <b>{"<header>, <footer>, <article>, <section>"}</b>
+          </code>{" "}
+          for better content structure.
+        </p>
+        <p>
+          - It also added native support for audio, video, canvas, and offline
+          storage without relying on plugins.
+        </p>
+        <p>
+          - HTML5 improves web applications’ interactivity and
+          mobile-friendliness, whereas HTML4 is mostly outdated and less
+          flexible for modern web needs.
         </p>
       </>
     ),
@@ -38,15 +145,59 @@ export const HTMLQuestions = [
     q: "What are tags in HTML? Name some commonly used tags.",
     a: (
       <>
+        <p>- In HTML, tags are the building blocks of a web page.</p>
         <p>
-          Tags in HTML are special keywords enclosed in angle brackets (e.g.,
-          &lt;tag&gt;) that define the structure and content of a web page. Each
-          tag represents an element, such as a heading, paragraph, image, or
-          link. Commonly used tags include &lt;html&gt;, &lt;head&gt;,
-          &lt;title&gt;, &lt;body&gt;, &lt;body&gt;, &lt;h1&gt;–&lt;h6&gt;
-          (headings), &lt;p&gt; (paragraph), &lt;a&gt; (anchor/link),
-          &lt;img&gt; (image), &lt;ul&gt; (unordered list), &lt;ol&gt; (ordered
-          list), &lt;li&gt; (list item), &lt;div&gt; and &lt;span&gt;.
+          - They define the structure and content by marking up elements such as
+          headings, paragraphs, links, images, and lists.
+        </p>
+        <p>
+          - Tags usually come in pairs — an opening tag and a closing tag —
+          though some are self-closing.
+        </p>
+        <p>
+          <b>Commonly used HTML tags:</b>
+          <li>
+            <b>Structure:</b>{" "}
+            <code>
+              <b>{"<html>, <head>, <body>"}</b>
+            </code>
+          </li>
+          <li>
+            <b>Text formatting:</b>{" "}
+            <code>
+              <b>{"<h1>–<h6>, <p>, <b>, <i>, <strong>"}</b>
+            </code>
+          </li>
+          <li>
+            <b>Links and media:</b>
+            <code>
+              <b>{"<a>, <img>, <video>, <audio>"}</b>
+            </code>
+          </li>
+          <li>
+            <b>Lists:</b>{" "}
+            <code>
+              <b>{"<ul>, <ol>, <li>"}</b>
+            </code>
+          </li>
+          <li>
+            <b>Tables:</b>{" "}
+            <code>
+              <b>{"<form>, <input>, <button>"}</b>
+            </code>
+          </li>
+          <li>
+            <b>Forms:</b>{" "}
+            <code>
+              <b>{"<table>, <tr>, <td>, <th>"}</b>
+            </code>
+          </li>
+          <li>
+            <b>Semantic elements (HTML5):</b>{" "}
+            <code>
+              <b>{"<header>, <footer>, <article>, <section></section>"}</b>
+            </code>
+          </li>
         </p>
       </>
     ),
@@ -56,15 +207,42 @@ export const HTMLQuestions = [
     a: (
       <>
         <p>
-          A basic HTML document has the following structure:
-          <pre>
-            <code>{structure}</code>
-          </pre>
-          This includes the doctype declaration, the root{" "}
-          <code>&lt;html&gt;</code> element, a <code>&lt;head&gt;</code> section
-          for metadata and title, and a <code>&lt;body&gt;</code> section for
-          visible content.
+          - A basic HTML document starts with the{" "}
+          <code>
+            <b>{"<!DOCTYPE html>"}</b>
+          </code>{" "}
+          declaration, which tells the browser that this is an HTML5 page.
         </p>
+        <p>
+          - Then we have the{" "}
+          <code>
+            <b>{"<html>"}</b>
+          </code>{" "}
+          tag that wraps all content. Inside{" "}
+          <code>
+            <b>{"<html>"}</b>
+          </code>
+          , there’s the{" "}
+          <code>
+            <b>{"<head>"}</b>
+          </code>{" "}
+          section, which contains metadata, the page title, and links to styles
+          or scripts.
+        </p>
+        <p>
+          - The{" "}
+          <code>
+            <b>{"<body>"}</b>
+          </code>{" "}
+          section contains all the visible content of the page like text,
+          images, links, and other elements.
+        </p>
+        <p>
+          -This structure provides a clean, standard framework for any web page.
+        </p>
+        <pre>
+          <code>{structure}</code>
+        </pre>
       </>
     ),
   },

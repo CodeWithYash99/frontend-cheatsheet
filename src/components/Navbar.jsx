@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/Navbar.css';
 
-const TABS = ["HTML", "CSS", "JavaScript", "React", "Redux"];
+const TABS = ["HTML", "CSS", "JavaScript", "React", "Redux", "TypeScript"];
 
 export default function Navbar({ active = 'HTML', onChange }) {
   const [open, setOpen] = useState(false);

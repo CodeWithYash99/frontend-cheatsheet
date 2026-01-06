@@ -6,6 +6,7 @@ import { CSSQuestions } from "./CSSQuestions";
 import { JavaScriptQuestions } from "./JavaScriptQuestions";
 import { ReactQuestions } from "./ReactQuestions";
 import { ReduxQuestions } from "./ReduxQuestions";
+import { TypeScriptQuestions } from "./TypeScriptQuestions";
 
 import "../styles/InterviewQuestions.css";
 
@@ -15,6 +16,7 @@ const QUESTION_BANK = {
   JavaScript: [...JavaScriptQuestions],
   React: [...ReactQuestions],
   Redux: [...ReduxQuestions],
+  TypeScript: [...TypeScriptQuestions]
 };
 
 // QUESTION_BANK holds categorized questions; `list` is derived from it at runtime

@@ -3,67 +3,104 @@ export const ReactQuestions = [
     q: "What is React JS?",
     a: (
       <p>
-        React JS is a free and open-source JavaScript library to develop user
-        interfaces based on components, it is particularly used for single page
-        applications. It is developed and maintained by Facebook along with
-        community of developers.
+        React JS is a JavaScript library that helps us build user interfaces in
+        a clean and organized way. Instead of developing an entire web page as
+        one big piece, React allows us to break it into small, reusable
+        components. Each component is able to manage its own logic and UI,
+        making the code easier to manage, debug, and scale.
       </p>
     ),
   },
   {
     q: "What are the Key Features of React JS?",
     a: (
-      <p>
-        Components based architecture, Declaration syntax, Virtual DOM, JSX,
-        Uni-directional data flow, React hooks.
-      </p>
-    ),
-  },
-  {
-    q: "What is virtual DOM?",
-    a: (
       <>
-        <li>
-          Virtual DOM is a key concept in React JS. It is a light weight copy of
-          actual DOM that React uses renders and performance optimization.
-        </li>
-        <li>
-          It minimizes the number of DOM manipulations by comparing the new
-          virtual DOM with previous one and applying differences.
-        </li>
-        <strong>Benefits of the Virtual DOM:</strong>
-        <li>Faster updates</li>
-        <li>Better performance in dynamic apps</li>
-        <li>Efficient rendering using diffing and reconciliation</li>
-        <li>Cleaner code using a declarative approach</li>
+        <strong>Component-based architecture :</strong>
+        <p>
+          React basically encourages us to build the UI in small, self-contained
+          components. <br />
+          So instead of writing one big messy file, I can split things into
+          reusable pieces — buttons, cards, forms, etc. This makes the code
+          cleaner and easier to maintain.
+        </p>
+        <strong>Virtual DOM :</strong>
+        <p>
+          React doesn’t touch the real DOM directly for every change. <br />
+          It first does a quick comparison using the “virtual DOM”, figures out
+          what exactly changed, and updates only that part in the browser. This
+          makes the UI feel super smooth.
+        </p>
+        <strong>JSX :</strong>
+        <p>
+          JSX allows me to describe how the UI should look, in a syntax that
+          feels like HTML, but with the power of JavaScript. It helps to write
+          cleaner and more expressive components.
+        </p>
+        <strong>Uni-directional data flow :</strong>
+        <p>
+          React follows a simple “top→down” data flow. <br />
+          This means the data always moves from parent to child. <br />
+          It sounds small, but in real projects it helps a lot because it avoids
+          confusion about where the data is coming from.
+        </p>
+        <strong>React hooks :</strong>
+        <p>
+          Hooks are one of the best features. <br />
+          They allow us to use things like state, lifecycle methods, side
+          effects, context, etc., directly in function components without
+          writing classes. <br />
+          It makes React code much simpler and cleaner.
+        </p>
+        <strong>Reusability :</strong>
+        <p>
+          Because everything is a component, we can reuse UI + logic easily.{" "}
+          <br />
+          And with custom hooks, we can also reuse logic across different
+          components without duplicating code.
+        </p>
+        <strong>Rich Ecosyatem :</strong>
+        <p>
+          React has a huge ecosystem — React Router, Redux, React Query, a lot
+          of UI libraries. <br />
+          So building a complete app becomes easier because everything is
+          readily available.
+        </p>
       </>
     ),
   },
   {
-    q: "What is Reconciliation?",
+    q: "What is Virtual DOM?",
     a: (
       <>
         <p>
-          Reconciliation is a process in React uses to update the DOM
-          efficiently when your application changes state or props.
-          <li>
-            When component change state or props, React creates a new virtual
-            DOM tree representation the updated UI.
-          </li>
-          <li>
-            React identifies what exactly changed, then updates only those
-            changed parts in the real DOM. This process is called
-            Reconciliation.
-          </li>
+          Instead of directly touching the real DOM every time something changes
+          (which is slow), React creates a virtual version of it in memory.{" "}
+          <br />
+          Whenever our data updates, React updates this virtual copy first.{" "}
+          <br />
+          Then it compares the new virtual DOM with the previous one and finds
+          out the smallest possible change that needs to be made. <br />
+          Finally, it updates only that part in the real DOM.
         </p>
-        <strong>or</strong>
+      </>
+    ),
+  },
+  {
+    q: "What is Diffing & Reconciliation?",
+    a: (
+      <>
+        <strong>Diffing :</strong>
         <p>
-          Reconciliation is the process through which React updates the DOM with
-          changes in the component's state or props. React uses a diffing
-          algorithm to compare the new virtual DOM with the previous one and
-          determines the most efficient way to update the actual DOM. This
-          process helps optimize performance by minimizing direct DOM
-          manipulations.
+          Whenever something changes, React does not blindly re-render
+          everything. It checks what changed by comparing the previous virtual
+          DOM and the updated one. This comparison process is called diffing.
+        </p>
+        <strong>So diffing = finding changes</strong>
+        <strong>Reconciliation = applying changes</strong>
+        <strong>Reconciliation :</strong>
+        <p>
+          Reconciliation is React’s smart mechanism that updates only the
+          necessary DOM elements based on the differences found during diffing.
         </p>
       </>
     ),
@@ -94,11 +131,9 @@ export const ReactQuestions = [
     q: "What is JSX",
     a: (
       <p>
-        JSX stands for JavaScript XML. It's a syntax extension for JavaScript
-        that allows you to write HTML-like code directly inside your JavaScript
-        files, particularly in React components. JSX makes it easier to
-        visualize the structure of your UI and how it relates to the underlying
-        logic.
+        JSX allows me to describe how the UI should look, in a syntax that feels
+        like HTML, but with the power of JavaScript. It helps me write cleaner
+        and more expressive components.
       </p>
     ),
   },
@@ -106,44 +141,35 @@ export const ReactQuestions = [
     q: "What is Babel?",
     a: (
       <p>
-        <b>Babel</b> is a <b>JavaScript compiler</b> that converts{" "}
-        <b>modern JavaScript (ES6+)</b> into{" "}
-        <b>backward-compatible JavaScript </b>
-        that can run in <b>current & older browsers</b>.
+        Babel takes the modern JavaScript we write — like ES6, ES7, arrow
+        functions, optional chaining, JSX — and converts it into older
+        JavaScript that all browsers can understand.
       </p>
     ),
   },
   {
     q: "What is Webpack?",
     a: (
-      <>
-        <p>
-          Webpack in React is JavaScript module bundler is commonly used with
-          React to bundle and manage with dependencies.
-        </p>
-        <strong>or</strong>
-        <p>
-          Webpack is a module bundler used to bundle JavaScript, CSS, images,
-          and other assets into optimized files for the browser. In React
-          projects, Webpack helps you:
-          <li>Load and bundle JSX, JavaScript, CSS, and images</li>
-          <li>Use Babel to transpile modern JavaScript and JSX</li>
-          <li>Create optimized builds for development and production</li>
-        </p>
-      </>
+      <p>
+        Webpack is a module bundler, Webpack collects your code, cleans it,
+        optimizes it, and bundles it into final files for production.
+      </p>
     ),
   },
   {
     q: "What is React Portal?",
     a: (
       <p>
-        React Portal is a feature that allows you to render a component's
-        children into a DOM node that exists outside the DOM hierarchy of the
-        parent component.
-        <li>
-          This is useful for modals, tooltips, and other UI elements that need
-          to visually break out of their parent container.
-        </li>
+        React Portal allows us to render a component's outside the normal parent
+        DOM hierarchy <br />
+        You can put a React component visually somewhere else in the DOM,
+        without breaking React’s structure. Examples:
+        <li>Modals / Popups</li>
+        <li>Dialogs</li>
+        <li>Tooltips</li>
+        <li>Dropdowns</li>
+        <li>Sidebars</li>
+        <li>Toast notifications</li>
       </p>
     ),
   },
@@ -153,15 +179,16 @@ export const ReactQuestions = [
       <>
         <strong>Stateless:</strong>
         <li>
-          Stateless components are functional components that do not manage
-          their own state. They receive data via props and render UI based on
-          that data.
+          A stateless component mean a component without state, So a component
+          that doesn’t manage its own data. <br />
+          <br />
+          It just receives data through props and displays it.
         </li>
         <strong>Stateful:</strong>
         <li>
-          Stateful components, are class-based components that can manage their
-          own state using the `this.state` object and can respond to user
-          interactions and lifecycle events.
+          A Stateful component means a component with state, So a components
+          that can manage their own data and can change overtime using
+          `useState` hook.
         </li>
       </>
     ),
@@ -217,54 +244,25 @@ export const ReactQuestions = [
     q: "Difference between Functional and Class components?",
     a: (
       <>
-        <p>
-          <strong>Functional:</strong>
-          <li>Functional components are plain JavaScript functions.</li>
-          <li>
-            They can use hooks like{" "}
-            <code>
-              <b>useState</b>
-            </code>{" "}
-            and{" "}
-            <code>
-              <b>useEffect</b>
-            </code>{" "}
-            to manage state and lifecycle methods.
-          </li>
-          <li>
-            This makes functional components very powerful and the preferred way
-            in modern React development.
-          </li>
-          <strong>Class:</strong>
-          <li>
-            Class components are ES6 classes that extend{" "}
-            <code>
-              <b>React.Component</b>
-            </code>
-            .
-          </li>
-          <li>
-            They manage state with{" "}
-            <code>
-              <b>this.state</b>
-            </code>{" "}
-            and lifecycle methods like{" "}
-            <code>
-              <b>componentDidMount</b>
-            </code>
-            .
-          </li>
-          <li>
-            they require more boilerplate code and can be harder to read and
-            maintain.
-          </li>
-        </p>
-        <strong>or</strong>
-        <p>
-          Functional components are simpler and are defined as JavaScript
-          functions. They can use React hooks to manage state and lifecycle
-          methods. Class components are more complex, defined as ES6 classes,
-        </p>
+        <strong>Functional:</strong>
+        <li>
+          Functional components are Simple JavaScript function. Clean and short.
+        </li>
+        <li>
+          It can be managed and lifecycle methods with Hooks like useState and
+          useEffect.
+        </li>
+        <li>No this keyword (very clean).</li>
+        <br />
+        <strong>Class:</strong>
+        <li>
+          Needs class, render(), constructors sometimes → more boilerplate.
+        </li>
+        <li>
+          It can be managed state and lifecycle methods with this.setState() and
+          componentDidMount, componentDidUpdate, componentWillUnmount.
+        </li>
+        <li>Uses this (can cause binding issues).</li>
       </>
     ),
   },
@@ -273,11 +271,11 @@ export const ReactQuestions = [
     a: (
       <>
         <li>
-          A Pure Component in React is a component that implements a shallow
-          comparison on props and state to decide whether it should re-render.
-        </li>
-        <li>
-          This helps optimize performance by preventing unnecessary renders.
+          Pure Component is basically an optimized component that re-renders
+          only when its props or state change. <br />
+          In class components, we use PureComponent. <br />
+          In functional components, we use React.memo() which does the same
+          thing.
         </li>
       </>
     ),
@@ -306,25 +304,19 @@ export const ReactQuestions = [
     a: (
       <>
         <li>
-          A controlled component in React is a form input element where the
-          value is controlled by React’s state. This allows real-time
-          validation, dynamic updates, and better control.
+          In Controlled component, Whatever is typed in the input goes straight
+          into React state first. UI shows whatever React gives it.
         </li>
         <li>
-          An uncontrolled component, relies on the DOM to handle its state using
-          refs. While uncontrolled components may require less code for simple
-          forms, controlled components are preferred for complex, interactive
-          forms because they offer better control and flexibility.
-        </li>
-        <strong>or</strong>
-        <li>
-          A Controlled Component is a form element whose value is controlled by
-          React state.
+          This gives full control on Validation, formatting, conditional
+          disabling, live updates
         </li>
         <li>
-          An Uncontrolled Component is managed by the DOM itself, and React does
-          not directly control its state.
+          In uncontrolled components, the input behaves like normal HTML, and
+          React only reads the value when needed.
         </li>
+        <li>React doesn’t know the value while typing</li>
+        <li>React checks the value only when needed</li>
       </>
     ),
   },
@@ -372,17 +364,19 @@ export const ReactQuestions = [
           <br />
           <strong>Props:</strong>
           <li>
-            Props are read-only inputs passed from a parent component to a child
-            component.
+            Props are like arguments to a function. The child receives them, but
+            cannot change them.
           </li>
-          <li>
-            Props allow components to be reusable and dynamic. <br />
-          </li>
+          <li>Props are read-only inputs.</li>
+          <li>Props allow components to be reusable and dynamic.</li>
           <strong>State:</strong>
           <li>
-            State, is managed within the component and can be changed over time
-            using “setState” in class components or “useState” in functional
-            components.
+            State is like a component’s own memory. It keeps track of things
+            that can change — like input values, counters, toggles, API data.
+          </li>
+          <li>
+            State, can be changed over time using “setState” in class components
+            or “useState” in functional components.
           </li>
           <li>State is used for handling data that changes.</li>
         </p>
@@ -557,6 +551,14 @@ export const ReactQuestions = [
     ),
   },
   {
+    q: "Can we route the pages in map method in React Js?",
+    a: (
+      <>
+        <p>...</p>
+      </>
+    ),
+  },
+  {
     q: "How do you handle protected routes in React Router?",
     a: (
       <>
@@ -652,13 +654,13 @@ export const ReactQuestions = [
         (like global state) across the component tree without passing props
         manually at every level.
         <strong>or</strong>
-        The Context API in React is used to manage global data that needs
-        to be accessed by many components without passing props manually. It
-        helps eliminate prop drilling. We create a context using
-        React.createContext, wrap the relevant components with a Provider, and
-        then access the shared data using either useContext in functional
-        components or a Consumer in class components. It's useful for themes,
-        user authentication, or language settings.
+        The Context API in React is used to manage global data that needs to be
+        accessed by many components without passing props manually. It helps
+        eliminate prop drilling. We create a context using React.createContext,
+        wrap the relevant components with a Provider, and then access the shared
+        data using either useContext in functional components or a Consumer in
+        class components. It's useful for themes, user authentication, or
+        language settings.
       </p>
     ),
   },
@@ -959,6 +961,38 @@ export const ReactQuestions = [
     ),
   },
   {
+    q: "In which scenario custom hooks are used in React Js?",
+    a: (
+      <>
+        <p>...</p>
+      </>
+    ),
+  },
+  {
+    q: "In which scenario useCallback hook is used in React Js?",
+    a: (
+      <>
+        <p>...</p>
+      </>
+    ),
+  },
+  {
+    q: "In which scenario useMemo hook is used in React Js?",
+    a: (
+      <>
+        <p>...</p>
+      </>
+    ),
+  },
+  {
+    q: "useRef vs createRef in React Js?",
+    a: (
+      <>
+        <p>...</p>
+      </>
+    ),
+  },
+  {
     q: "useTransistion hook?",
     a: (
       <p>
@@ -1117,6 +1151,14 @@ export const ReactQuestions = [
           contains the claims (user data), and the signature is used to verify
           the token's integrity.
         </p>
+      </>
+    ),
+  },
+  {
+    q: "How to check if a JWT token is expired?",
+    a: (
+      <>
+        <p>...</p>
       </>
     ),
   },

@@ -1074,8 +1074,8 @@ export const JavaScriptQuestions = [
         </p>
         <p>
           - <b>var</b> is <b>function-scoped</b>, while <b>let</b> and{" "}
-          <b>const</b> are block-scoped, with const being used for values that
-          shouldn’t change.
+          <b>const</b> are <b>block-scoped</b>, with const being used for values that
+          should not change.
         </p>
         <p>
           - Variables can hold different types of data, like numbers, strings,
@@ -1094,7 +1094,7 @@ export const JavaScriptQuestions = [
           variables.
         </p>
         <p>
-          - <b>var</b> is <b>function-scoped</b> and can be redeclared, but it
+          - <b>var</b> is <b>function-scoped</b>, can be redeclared and reassigned, but it
           has some unexpected behaviors like hoisting that can cause bugs.
         </p>
         <p>
@@ -1114,11 +1114,16 @@ export const JavaScriptQuestions = [
     a: (
       <>
         <p>
-          In JavaScript, <b>use strict</b> is a directive that enables strict
-          mode, which helps catch common coding mistakes and unsafe actions. For
-          example, it prevents using undeclared variables, disallows duplicate
+          - In JavaScript, <b>use strict</b> is a directive that enables strict
+            mode, which helps catch common coding mistakes and unsafe actions.
+        </p>
+        <p>
+          - For example, it prevents using undeclared variables, disallows duplicate
           parameter names, and makes assignments to read-only properties throw
-          errors. Strict mode makes your code more secure and easier to debug.
+          errors.
+        </p>
+        <p>
+          - Strict mode makes your code more secure and easier to debug.
           You can enable it for an entire script or for individual functions by
           placing{" "}
           <code>
@@ -1138,7 +1143,7 @@ export const JavaScriptQuestions = [
           objects with the same structure and behavior.
         </p>
         <p>
-          - It acts like a blueprint — it will allows you define properties and
+          - It acts like a blueprint — it will allows you define to properties and
           methods inside the function, and then use the{" "}
           <code>
             <b>new</b>
@@ -1146,7 +1151,7 @@ export const JavaScriptQuestions = [
           keyword to create new object instances.
         </p>
         <p>
-          - Constructor functions help organize code, avoid repetition, and make
+          - Constructor function helps to organize code, avoid repetition, and make
           it easier to work with multiple similar objects in a program.
         </p>
       </>
@@ -1206,8 +1211,8 @@ export const JavaScriptQuestions = [
             <code>
               <b>==</b>
             </code>{" "}
-            is the equality operator that compares values after performing type
-            coercion, meaning it converts the types if they are different.
+            is the loose equality operator that compares values after performing type
+            coercion, that means it converts the types if they are different.
           </li>
           <li>
             On the other hand,{" "}
@@ -1262,12 +1267,14 @@ export const JavaScriptQuestions = [
           <li>
             On the other hand,{" "}
             <code>
-              <b>‘not defined’</b>
+              <b>not defined</b>
             </code>{" "}
             occurs when you try to access a variable that hasn’t been declared
-            at all, which will throw a reference error. Understanding these
-            differences helps to prevent runtime errors and makes code more
-            predictable.
+            at all, which will throw a reference error.
+          </li>
+          <li>
+            Understanding these differences helps to prevent runtime errors and makes 
+            code more predictable.
           </li>
         </p>
         <pre>{undefinedNullNotDefined}</pre>
